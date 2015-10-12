@@ -8,6 +8,8 @@
 	}
 	nav {
 		background-color: #233e76;
+		height: 40px;
+		font-size: 0.6em;
 	}
 	a {
 	  color: white;
@@ -38,24 +40,32 @@
 	.main-nav ul {
 		list-style: none;
 		margin: 0;
+		padding: 0;
+		padding-top: 10px;
 	}
 	.main-nav ul li {
+		padding: 0px;
 		padding-left: 10px;
 		padding-right: 10px;
 		display: inline;
 		margin: 0;
+		border: 0px solid white;
+		overflow: hidden;
 	}
 	.main-nav ul li:HOVER {
-		border-radius: 25px;
+		background-color: #bd1f35;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		border-radius: 7px;
 	}
 	.main-nav ul li a {
+		position: relative;
+		top: -1px;
 	  text-decoration: none;
-	  font-size: 0.75em;
+	  font-size: 14pt;
 	  font-family: myriad pro;
 	}
-	.main-nav ul li:HOVER a {
-		background-color: #bd1f35;
-	}
+
 	#slide-wrapper {
 		position: absolute;
 	}
@@ -92,19 +102,19 @@
 		position: relative;
 		display:none;
 		width: 100%;
-		height: 80px;
+		height: 60px;
 		background-color: #bd1f35;
 	}
 	.slideimg-senate{
 		position: absolute;
 		left: 0;
-		height: 60px;
+		height: 50px;
 	}
 	.slideimg-asua{
 		position: absolute;
 		right: 0;
 		top: 0;
-		height: 60px;
+		height: 50px;
 	}
 	header,
 	.main-nav-scrolled {
