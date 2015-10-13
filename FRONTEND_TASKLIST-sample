@@ -1,9 +1,9 @@
 FRONTEND TASKLIST:
 
 Phase 1:
-[ ] - Fix Safari issue with JQuery positioning of the nav-bar.
+[X] - Fix Safari issue with JQuery positioning of the nav-bar.
 [ ] - Optimize images for load time
-[ ] - Fix main div in Firefox (expands too wide and causes side-scrolling)
+[X] - Fix main div in Firefox (expands too wide and causes side-scrolling)
 [ ] - Main senate logo was cropped improperly.
 [ ] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
 Phase 2:

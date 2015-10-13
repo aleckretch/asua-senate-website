@@ -47,6 +47,8 @@
 		padding: 0px;
 		padding-left: 10px;
 		padding-right: 10px;
+		padding-top: 1px;
+		padding-bottom: 1px;
 		display: inline;
 		margin: 0;
 		border: 0px solid white;
@@ -68,6 +70,7 @@
 
 	#slide-wrapper {
 		position: absolute;
+		width: 100%;
 	}
 	#top-full-splash {
 		position: relative;
@@ -82,8 +85,8 @@
 	#senate-logo {
 		position: relative;
 		margin: 0 auto;
-		width: 400px;
-		left: -200px;
+		width: 530px;
+		left: -280px;
 		z-index: 149;
 		
 	}
@@ -126,9 +129,9 @@
 		position:relative;
 		z-index: 149;
 	  background: white;
-	  padding: 110px 50px 50px;
+	  padding: 50px 0px 50px;
 	  column-count: 2;
-	  column-gap: 40px;
+/* 	  column-gap: 40px; */
 	  font-family: Verdana;
 	}
 
