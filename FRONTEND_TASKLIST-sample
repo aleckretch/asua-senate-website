@@ -1,0 +1,23 @@
+FRONTEND TASKLIST:
+
+Phase 1:
+[ ] - Fix Safari issue with JQuery positioning of the nav-bar.
+[ ] - Optimize images for load time
+[ ] - Fix main div in Firefox (expands too wide and causes side-scrolling)
+[ ] - Main senate logo was cropped improperly.
+[ ] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
+Phase 2:
+[ ] - Populate main body with filler content (pictures, calendar, etc)
+[ ] - Start onclick overlay for Senate profile. Plugin or custom code?
+Phase 3:
+[ ] - Refactor CSS/HTML & any other ugly working code.
+[ ] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
+Phase 4: 
+[ ] - Calendar (possible AngularJS?) implementation.
+[ ] - Test cross-browser & platform implementation
+Phase 5: 
+[ ] - Live Stream? Is this an actual feature? If so, research & implementation.
+[ ] - Agenda implementation (another overlay or separate page?)
+Phase 6:
+[ ] - Content population
+[ ] - Final Cross-browser & platform checks
