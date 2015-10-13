@@ -4,8 +4,12 @@ Phase 1:
 [X] - Fix Safari issue with JQuery positioning of the nav-bar.
 [ ] - Optimize images for load time
 [X] - Fix main div in Firefox (expands too wide and causes side-scrolling)
+[X] - Implement custom fonts
 [ ] - Main senate logo was cropped improperly.
-[ ] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
+[X] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
+[ ] - Figure out texturing the design team used on the main body.
+[ ] - Adjust dimensions of scrolled nav bar. 
+[ ] - Implement footer (gray area at bottom)
 Phase 2:
 [ ] - Populate main body with filler content (pictures, calendar, etc)
 [ ] - Start onclick overlay for Senate profile. Plugin or custom code?

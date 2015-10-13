@@ -11,7 +11,8 @@
 		font-size: 0.6em;
 	}
 	a {
-	  color: #192857;
+	  color: #888;
+	  text-decoration: underline;
 	}
 	h1, h2, h3 {
 		color: #bd1f35;
@@ -49,8 +50,8 @@
 		padding: 0px;
 		padding-left: 10px;
 		padding-right: 10px;
-		padding-top: 1px;
-		padding-bottom: 1px;
+		padding-top: 5px;
+		padding-bottom: 3px;
 		display: inline;
 		margin: 0;
 		border: 0px solid white;
@@ -67,7 +68,7 @@
 		position: relative;
 		top: -1px;
 	  text-decoration: none;
-	  font-size: 14pt;
+	  font-size: 16pt;
 	  font-family: myriad pro;
 	}
 	.text-regular {
@@ -75,7 +76,7 @@
 	}
 	.icon {
 		position: relative;
-		top: 9px;
+		top: 8px;
 		width: 40px;
 	}
 	#slide-wrapper {
