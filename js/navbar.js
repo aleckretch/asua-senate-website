@@ -2,7 +2,7 @@ $(function() {
 	
 	var  mn = $(".slide-header");
 		mns = "main-nav-scrolled";
-		hdr = $('#top-full-splash').height()+50;
+		hdr = $('#top-full-splash').height() + 50;
 	//This controls the sticky behavior of the navbar and toggles the red bit with the logos above it.
 	$(window).scroll(function() {
 	  if( $(this).scrollTop() > hdr ) {
@@ -15,16 +15,26 @@ $(function() {
 	});
 	//This sets our nav bar to the bottom of our image, because it scales responsively with the width. 
 	$(window).load(function() {
-		hdr = $('#top-full-splash').height()+50;
-		$('#slide-wrapper').css("top", $('#top-full-splash').height() + 150);
+		hdr = $('#top-full-splash').height() - 100;
+		$('#slide-wrapper').css("top", $('#top-full-splash').height() );
+
+		//This adds smooth scrolling for each of the nav links, excluding the blog link
+		$( 'nav a:not(#blogLink)' ).click( function() {
+			event.preventDefault();
+			var headID = $( this ).attr( "href" );
+			var newPosition = $( headID ).offset().top - 100;
+			console.log( newPosition );
+			$('html,body').animate( {
+			  scrollTop: newPosition
+			}, 750);
+		});
 
 	
 	});
-		
-		//This makes sure that if the size changes on-the-fly that the navbar sticks to the bottom of our senate splash picture.
+	//This makes sure that if the size changes on-the-fly that the navbar sticks to the bottom of our senate splash picture.
 	$(window).on('resize', function() {
-		hdr = $('#top-full-splash').height() + 100;
-		$('#slide-wrapper').css("top", $('#top-full-splash').height() + 150);
+		hdr = $('#top-full-splash').height() - 100;
+		$('#slide-wrapper').css("top", $('#top-full-splash').height() );
 		
 	});
 

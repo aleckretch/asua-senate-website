@@ -14,8 +14,8 @@ Phase 2:
 [ ] - Populate main body with filler content (pictures, calendar, etc) (Carl)
 [ ] - Start onclick overlay for Senate profile. Plugin or custom code? (Chris)
 [ ] - Smooth animation of scrolled navbar pop-in. (Aaron)
-[ ] - Auto scroll on nav. (Dilan)
-[ ] - Keep navbar from dropping off bottom on high res/wide viewports(Dilan)
+[X] - Auto scroll on nav. (Dilan)
+[X] - Keep navbar from dropping off bottom on high res/wide viewports(Dilan)
 Phase 3:
 [ ] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
 Phase 4: 
