@@ -13,15 +13,19 @@ Phase 1:
 Phase 2:
 [ ] - Populate main body with filler content (pictures, calendar, etc)
 [ ] - Start onclick overlay for Senate profile. Plugin or custom code?
+[ ] - Smooth animation of scrolled navbar pop-in.
 Phase 3:
-[ ] - Refactor CSS/HTML & any other ugly working code.
 [ ] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
 Phase 4: 
 [ ] - Calendar (possible AngularJS?) implementation.
 [ ] - Test cross-browser & platform implementation
 Phase 5: 
 [ ] - Live Stream? Is this an actual feature? If so, research & implementation.
-[ ] - Agenda implementation (another overlay or separate page?)
+[ ] - Agenda implementation (another overlay or separate page? Archiving procedures...)
 Phase 6:
+[ ] - Bug search & destroy.
+Phase 7:
+[ ] - Refactor CSS/HTML & any other ugly working code.
 [ ] - Content population
-[ ] - Final Cross-browser & platform checks
+[ ] - Test all links and content. 
+[ ] - Final Cross-browser & platform checks/last minute bug fixes
