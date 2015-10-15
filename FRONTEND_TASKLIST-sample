@@ -7,7 +7,7 @@ Phase 1:
 [X] - Implement custom fonts
 [ ] - Main senate logo was cropped improperly. (Carl)
 [X] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
-[ ] - Figure out texturing the design team used on the main body. (Chris)
+[X] - Figure out texturing the design team used on the main body. (Chris)
 [ ] - Adjust dimensions of scrolled nav bar. (Aaron)
 [ ] - Implement footer (gray area at bottom) (Other Aaron)
 Phase 2:
