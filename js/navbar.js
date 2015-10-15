@@ -20,13 +20,13 @@ $(function() {
 
 		//This adds smooth scrolling for each of the nav links, excluding the blog link
 		$( 'nav a:not(#blogLink)' ).click( function() {
-			event.preventDefault();
 			var headID = $( this ).attr( "href" );
 			var newPosition = $( headID ).offset().top - 100;
 			console.log( newPosition );
 			$('html,body').animate( {
 			  scrollTop: newPosition
 			}, 750);
+			return false;
 		});
 
 	
