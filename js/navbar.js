@@ -15,8 +15,13 @@ $(function() {
 	});
 	//This sets our nav bar to the bottom of our image, because it scales responsively with the width. 
 	$(window).load(function() {
-		hdr = $('#top-full-splash').height() - 100;
-		$('#slide-wrapper').css("top", $('#top-full-splash').height() );
+		hdr = $('#top-full-splash').height() + 50;
+		$('#slide-wrapper').css("top", $('#top-full-splash').height() + 150 );
+
+		//Scrolls the page down a little so that the nav bar gets shown on large resolutions
+		$( 'html,body').animate( {
+			scrollTop: $( '#top-full-splash' ).height() - 515
+		}, 75);
 
 		//This adds smooth scrolling for each of the nav links, excluding the blog link
 		$( 'nav a:not(#blogLink)' ).click( function() {
@@ -33,8 +38,8 @@ $(function() {
 	});
 	//This makes sure that if the size changes on-the-fly that the navbar sticks to the bottom of our senate splash picture.
 	$(window).on('resize', function() {
-		hdr = $('#top-full-splash').height() - 100;
-		$('#slide-wrapper').css("top", $('#top-full-splash').height() );
+		hdr = $('#top-full-splash').height() + 100;
+		$('#slide-wrapper').css("top", $('#top-full-splash').height() + 150 );
 		
 	});
 
