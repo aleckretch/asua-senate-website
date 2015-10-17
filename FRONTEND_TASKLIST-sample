@@ -8,12 +8,12 @@ Phase 1:
 [ ] - Main senate logo was cropped improperly. (Carl)
 [X] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
 [X] - Figure out texturing the design team used on the main body. (Chris)
-[ ] - Adjust dimensions of scrolled nav bar. (Aaron)
+[X] - Adjust dimensions of scrolled nav bar. (Aaron)
 [ ] - Implement footer (gray area at bottom) (Other Aaron)
 Phase 2:
 [ ] - Populate main body with filler content (pictures, calendar, etc) (Carl)
 [ ] - Start onclick overlay for Senate profile. Plugin or custom code? (Chris)
-[ ] - Smooth animation of scrolled navbar pop-in. (Aaron)
+[X] - Smooth animation of scrolled navbar pop-in. (Aaron)
 [X] - Auto scroll on nav. (Dilan)
 [X] - Keep navbar from dropping off bottom on high res/wide viewports(Dilan)
 Phase 3:
