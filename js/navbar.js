@@ -24,14 +24,18 @@ $(function() {
 	
 	//This controls the sticky behavior of the navbar and toggles the red bit with the logos above it.
 	$(window).scroll(function() {
+		console.log($(this).scrollTop());
 	  if( $(this).scrollTop() > hdr ) {
 		mn.addClass(mns);
 		$('#slide-images').css('opacity','1');
+		console.log("added");
+		console.log(hdr);
 // 		if(!menuFlag)
 // 			showMenu();
 	  } else {
 		mn.removeClass(mns);
 		$('#slide-images').css('opacity','0');
+		console.log("removed");
 // 		if(menuFlag)
 // 			hideMenu();
 	  }
@@ -40,12 +44,21 @@ $(function() {
 	//This sets our nav bar to the bottom of our image, because it scales responsively with the width. 
 	$(window).load(function() {
 		hdr = $('#top-full-splash').height() + hdrOffset;
-		$('#slide-wrapper').css("top", $('#top-full-splash').height() + slideHeight );
+		windowHeight = $(window).height();
+		
+
+		console.log("Window height: " + windowHeight + "\nTop Height: " + $('#top-full-splash').height() + "\n");
 
 		//Scrolls the page down a little so that the nav bar gets shown on large resolutions
-		$( 'html,body').animate( {
-			scrollTop: $( '#top-full-splash' ).height() - 515
-		}, 75);
+		if(windowHeight < hdr + 100) {
+			$( 'html,body').animate( {
+				scrollTop:   ($('#top-full-splash').height() + slideHeight - windowHeight + 170)
+			}, 275);
+		} else {
+			$('#slide-wrapper').css("top", $('#top-full-splash').height() + slideHeight );
+		}
+
+
 
 		//This adds smooth scrolling for each of the nav links, excluding the blog link
 		$( 'nav a:not(#blogLink)' ).click( function() {
