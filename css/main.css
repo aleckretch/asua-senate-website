@@ -160,14 +160,78 @@
 		padding: 25px 15px 25px 15px;
 		font-family: Myriad pro;
 	}
+
+	/* format footer section */
 	footer {
 		width: 100%;
 		margin: 0;
 		padding: 0;
 		text-align: center;
 		background-color: #3a3a3a;
-		height: 75px;
+		height: 100px;
 		font-size: 0.8em;
 	}
+
+	.left-content{
+		position: absolute;
+		width: 30%;
+		font-size: 1.2em;
+		margin-left: 10%;
+		line-height: 130%;
+	}
+	
+	.right-content{
+		float: right;
+		font-size: 1.2em;
+		width: 30%;
+		margin-right: 20%;
+	}
+
+	.social-media p{
+		margin-bottom: 10px;
+	}
+
+	.icon-square{
+		display: inline-block;
+		margin-right: 5px;
+
+	}
+
+	.icon-square .fa-facebook{
+		border-radius: 5px;
+		background-color: #3b5998;
+		height: 30px;
+		width: 25px;
+		text-align: center;
+		padding-top: 5px;
+	}
+
+	.icon-square .fa-twitter{
+		border-radius: 5px;
+		background-color: #00aced;
+		height: 25px;
+		width: 10px;
+		text-align: center;
+		padding-top: 5px;
+		padding-right: 20px;
+		padding-bottom: 5px;
+	}
+
+
+	.icon-square i{
+		
+		font-size: 2em;
+		color: #fff;
+		padding-left: 10px;
+
+	}
+
+	
+
+
+
+
+
+
 
 
