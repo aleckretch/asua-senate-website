@@ -86,6 +86,14 @@
 		top: 8px;
 		width: 40px;
 	}
+	#calender {
+		text-align: center; 
+	  
+	}
+	#livestream {
+		text-align: center; 
+	  
+	}
 	#slide-wrapper {
 		margin: 0;
 		padding: 0;
