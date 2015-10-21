@@ -52,7 +52,7 @@ $(function() {
 		//Scrolls the page down a little so that the nav bar gets shown on large resolutions
 		if(windowHeight < hdr + 100) {
 			$( 'html,body').animate( {
-				scrollTop:   ($('#top-full-splash').height() + slideHeight - windowHeight + 170)
+				scrollTop:   ($('#top-full-splash').height() + slideHeight - windowHeight + 230)
 			}, 275);
 		} else {
 			$('#slide-wrapper').css("top", $('#top-full-splash').height() + slideHeight );
