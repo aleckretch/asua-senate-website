@@ -18,10 +18,10 @@ Phase 2:
 [X] - Auto scroll on nav. (Dilan)
 [X] - Keep navbar from dropping off bottom on high res/wide viewports (Dilan)
 Phase 3:
-[ ] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
+[X] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
 [ ] - Add some padding for the white logos in the scrollbar header (3-5px probably) (Chris)
 [ ] - Make a scalable temp calendar (Carl)
-[ ] - Fix the over-scrolling issue on nav-click. (Aaron)
+[X] - Fix the over-scrolling issue on nav-click. (Dilan)
 [ ] - API research and tie-in (Dilan)
 [ ] - Fix the width of the triangular pattern to be exactly the window width. (Aaron)
 [ ] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
@@ -49,3 +49,4 @@ Phase 8:
 [ ] - Content population
 [ ] - Test all links and content. 
 [ ] - Final Cross-browser & platform checks/last minute bug fixes
+
