@@ -16,23 +16,35 @@ Phase 2:
 [X] - Fix Senate logo so that it has a transparent background (Alec)
 [X] - Smooth animation of scrolled navbar pop-in. (Aaron)
 [X] - Auto scroll on nav. (Dilan)
-[X] - Keep navbar from dropping off bottom on high res/wide viewports(Dilan)
+[X] - Keep navbar from dropping off bottom on high res/wide viewports (Dilan)
 Phase 3:
 [ ] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
+[ ] - Add some padding for the white logos in the scrollbar header (3-5px probably) (Chris)
 [ ] - Make a scalable temp calendar (Carl)
-[ ] - Fix the over-scrolling issue on nav-click. (Chris)
+[ ] - Fix the over-scrolling issue on nav-click. (Aaron)
+[ ] - API research and tie-in (Dilan)
 [ ] - Fix the width of the triangular pattern to be exactly the window width. (Aaron)
 [ ] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
 [X] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
+
+PHASE 3 NOTES AND INFO: 
+facebook: https://www.facebook.com/ASUATODAY?fref=ts
+twitter: https://twitter.com/asuatoday
+google calendar (embed code): <iframe src="https://www.google.com/calendar/embed?src=email.arizona.edu_ba85oje4iaib34bjl8hq3urli4%40group.calendar.google.com&ctz=America/Phoenix" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
 Phase 4: 
 [ ] - Calendar implementation.
 [ ] - Test cross-browser & platform implementation
-Phase 5: 
+Phase 5:
+[ ] - Blog aesthetic implementation (junk content)
+[ ] - Login page for blog. 
+[ ] - 
+Phase 6: 
 [ ] - Live Stream? Is this an actual feature? If so, research & implementation.
 [ ] - Agenda implementation (another overlay or separate page? Archiving procedures...)
-Phase 6:
-[ ] - Bug search & destroy.
 Phase 7:
+[ ] - Bug search & destroy.
+Phase 8:
 [ ] - Refactor CSS/HTML & any other ugly working code.
 [ ] - Content population
 [ ] - Test all links and content. 
