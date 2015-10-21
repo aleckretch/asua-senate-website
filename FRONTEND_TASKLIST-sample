@@ -1,25 +1,31 @@
 FRONTEND TASKLIST:
 
-Phase 1:
+Phase 1: COMPLETED
 [X] - Fix Safari issue with JQuery positioning of the nav-bar.
-[ ] - Optimize images for load time (Carl)
+[X] - Optimize images for load time (Carl)
 [X] - Fix main div in Firefox (expands too wide and causes side-scrolling)
 [X] - Implement custom fonts
-[ ] - Main senate logo was cropped improperly. (Carl)
+[X] - Main senate logo was cropped improperly. (Carl)
 [X] - Adjust the heights on the li elements and the nav bar during scroll to more closely reflect the design.
 [X] - Figure out texturing the design team used on the main body. (Chris)
 [X] - Adjust dimensions of scrolled nav bar. (Aaron)
-[ ] - Implement footer (gray area at bottom) (Other Aaron)
+[X] - Implement footer (gray area at bottom) (Other Aaron)
 Phase 2:
-[ ] - Populate main body with filler content (pictures, calendar, etc) (Carl)
+[X] - Populate main body with filler content (pictures, calendar, etc) (Carl)
 [ ] - Start onclick overlay for Senate profile. Plugin or custom code? (Chris)
+[X] - Fix Senate logo so that it has a transparent background (Alec)
 [X] - Smooth animation of scrolled navbar pop-in. (Aaron)
 [X] - Auto scroll on nav. (Dilan)
 [X] - Keep navbar from dropping off bottom on high res/wide viewports(Dilan)
 Phase 3:
-[ ] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
+[ ] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
+[ ] - Make a scalable temp calendar (Carl)
+[ ] - Fix the over-scrolling issue on nav-click. (Chris)
+[ ] - Fix the width of the triangular pattern to be exactly the window width. (Aaron)
+[ ] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
+[X] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
 Phase 4: 
-[ ] - Calendar (possible AngularJS?) implementation.
+[ ] - Calendar implementation.
 [ ] - Test cross-browser & platform implementation
 Phase 5: 
 [ ] - Live Stream? Is this an actual feature? If so, research & implementation.
