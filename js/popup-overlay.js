@@ -2,8 +2,7 @@
 $(document).ready(function() {
 	// Initialize the plugin
 	$('#popup').popup({
-		opacity: 0.5,
-		scrolllock: true
+		opacity: 0.5
 	});
 });
 	
