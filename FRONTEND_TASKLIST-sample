@@ -19,7 +19,7 @@ Phase 2:
 [X] - Keep navbar from dropping off bottom on high res/wide viewports (Dilan)
 Phase 3:
 [X] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
-[ ] - Add some padding for the white logos in the scrollbar header (3-5px probably) (Chris)
+[X] - Add some padding for the white logos in the scrollbar header (15px) (Chris)
 [ ] - Make a scalable temp calendar (Carl)
 [X] - Fix the over-scrolling issue on nav-click. (Dilan)
 [ ] - API research and tie-in (Dilan)
@@ -33,6 +33,7 @@ twitter: https://twitter.com/asuatoday
 google calendar (embed code): <iframe src="https://www.google.com/calendar/embed?src=email.arizona.edu_ba85oje4iaib34bjl8hq3urli4%40group.calendar.google.com&ctz=America/Phoenix" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 Phase 4: 
+[ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely
 [ ] - Calendar implementation.
 [ ] - Test cross-browser & platform implementation
 Phase 5:

@@ -14,6 +14,7 @@
 	  color: #888;
 	  text-decoration: underline;
 	}
+	/*
 	h1 {
 		height: 60px;
 		width: 100%;
@@ -21,6 +22,7 @@
 		padding-left: 30px;
 		background-image: url("../images/our-impact-background.png");
 	}
+	*/
 	h1, h2, h3 {
 		color: #bd1f35;
 		font-family: 'bebas_neueregular';
@@ -31,6 +33,7 @@
 	  background: #bd1f35;
 	  width: 100%;
 	}
+	
 	.main-nav,
 	.main {
 	  position: relative; 
@@ -38,6 +41,7 @@
 	  color: black;
 	  background-color: white;
 	}
+	
 	.main-nav {
 		position: relative;
 		top: -50px;
@@ -126,6 +130,7 @@
 		right: 0px;
 		top: 0px;
 		height: 70px;
+		margin: 15px 15px 0 0;
 	}
 	.slide-header {
 		overflow: hidden;
@@ -143,12 +148,14 @@
 		position: absolute;
 		left: 0;
 		height: 70px;
+		margin: 15px 0 0 15px;
 	}
 	.slideimg-asua{
 		position: absolute;
 		right: 0;
 		top: 0;
 		height: 70px;
+		margin: 15px 15px 0 0;
 	}
 	header,
 	.main-nav-scrolled {
@@ -159,11 +166,13 @@
 	.main {
 		position:relative;
 		z-index: 149;
-	  background: white;
+	  background: black;
 	  padding: 50px 0px 50px;
 	  column-count: 2;
 /* 	  column-gap: 40px; */
 	  font-family: Verdana;
+		background-image: url("../images/our-impact-background.png");
+		background-repeat: repeat;
 	}
 	.main-article {
 		width: 95%;
@@ -260,10 +269,28 @@
 		padding-left: 10px;
 
 	}
-
 	
-
-
+	#mugshots{
+		width: 100%;
+	}
+	#mugshots tr td img{
+		width: 100%;
+	}
+	
+	#popup{
+		background: white;
+		width: 50%;
+		height: 50%;
+		color: blue;
+		padding: 20px;
+	}
+	
+	#popup img{
+		height: 150px;
+		width: 150px;
+	}
+	
+	
 
 
 

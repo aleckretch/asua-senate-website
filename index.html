@@ -9,7 +9,9 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/jquery.popupoverlay.js"></script>
 		<script src="js/navbar.js"></script>
+		<script src="js/popup-overlay.js"></script>
 
 	</head>
 	
@@ -35,14 +37,52 @@
 					<li><a href="#agendaHead"> agenda</a></li> |
 					<li><a href="#calendarHead"> calendar</a></li> |
 					<li><a href="#livestreamHead"> live stream</a></li> |
-					<li><a id=blogLink href="#"> blog</a></li>
+					<li><a id="blogLink" href="#"> blog</a></li>
 				</ul>
 			</nav>
 		</div>
 		<div class="main">
 			<article id="senatorsHead" class="senate-profile-section main-article">
 			  <h1><i class="text-regular">YOUR&nbsp;</i> 2015 Student Senate</h1>
-			  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla, purus in porttitor pellentesque, erat arcu tincidunt diam, dapibus faucibus leo mauris at sapien. In porttitor vehicula sodales. Vivamus massa neque, facilisis eu felis ut, aliquet convallis nisi. Nam elementum tellus vitae gravida fermentum. Nullam et imperdiet leo. Integer ut euismod lorem, in placerat lacus. Curabitur bibendum arcu ut feugiat commodo. Suspendisse ut mi vel orci ullamcorper tincidunt. Nam vitae fringilla nibh. Nullam hendrerit blandit velit eu hendrerit.</p>
+			  <p>
+				  <table id="mugshots">
+					<tr>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+					</tr>
+					<tr>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+						<td>
+							<img class="overlayIt" src="images/senate_img.png" alt="Senator Mugshot">
+						<td>
+					</tr>
+					
+				  </table>
+			  </p>
 			</article>
 			
 			<article id="agendaHead" class="agenda-section main-article">
@@ -80,6 +120,20 @@
 					</div>
 				</div>
 			</footer>
+	 </div>
+	 <div id="popup">
+		<img src="images/senate_img.png" alt="Mug Shot">
+		<span>
+		<h1>SENATOR ALEC KRETCH</h1>
+		<h6>FROM: CLEVELAND, OH<br>YEAR: JUNIOR<br>MAJOR: COMPUTER SCIENCE<h6></p>
+		</span>
+		<div>
+		<p>Dear student body,<br><br>Tum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In iaculis pharetra odio, sit amet consectetur elit facilisis ac. 
+		Praesent eget tristique ipsum.<br><br>Donec malesuada bibendum lacinia. Praesent non purus sodales, pulvinar mi vitae, tincidunt leo. Phasellus vitae elit ut nisl semper fringilla id rutrum dolor. 
+		Donec a massa adipiscing, cursus risus vitae, porttitor tortor. Nullam sagittis est sapien, sit amet pharetra turpis imperdiet vel. Etiam sit amet ligula pretium, vulputate eros ac, bibendum velit. 
+		Aenean convallis ante purus, ac bibendum orci laoreet ac. Donec a convallis mauris. Nulla non lacus non ipsum pretium tempor. In hac habitasse platea dictumst. Aenean at ipsum vulputate, 
+		sagittis dui ut, pharetra neque. Nam eget sodales orci. Aliquam pharetra nunc at nisl pellentesque, nec fringilla enim iaculis.<br><br>Sincerely,<br>Alec Kretch</p>
+		</div>
 	 </div>
 	 </body>
 </html>
