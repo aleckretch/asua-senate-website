@@ -12,7 +12,7 @@ Phase 1: COMPLETED
 [X] - Implement footer (gray area at bottom) (Other Aaron)
 Phase 2:
 [X] - Populate main body with filler content (pictures, calendar, etc) (Carl)
-[ ] - Start onclick overlay for Senate profile. Plugin or custom code? (Chris)
+[X] - Start onclick overlay for Senate profile. Plugin or custom code? (Chris)
 [X] - Fix Senate logo so that it has a transparent background (Alec)
 [X] - Smooth animation of scrolled navbar pop-in. (Aaron)
 [X] - Auto scroll on nav. (Dilan)
