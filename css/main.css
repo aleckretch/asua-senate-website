@@ -218,9 +218,9 @@
 
 	.left-content{
 		position: absolute;
-		width: 30%;
-		font-size: 1.2em;
-		margin-left: 10%;
+		width: 27%;
+		font-size: 1.3em;
+		margin-left: 20%;
 		line-height: 130%;
 	}
 	
@@ -228,11 +228,12 @@
 		float: right;
 		font-size: 1.2em;
 		width: 30%;
-		margin-right: 20%;
+		margin-right: 15%;
 	}
 
 	.social-media p{
 		margin-bottom: 10px;
+		font-size: 1.1em;
 	}
 
 	.icon-square{
