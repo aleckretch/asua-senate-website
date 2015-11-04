@@ -23,8 +23,8 @@ Phase 3:
 [ ] - Make a scalable temp calendar (Carl)
 [X] - Fix the over-scrolling issue on nav-click. (Dilan)
 [ ] - API research and tie-in (Dilan)
-[ ] - Fix the width of the triangular pattern to be exactly the window width. (Aaron)
-[ ] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
+[X] - Fix the width of the triangular pattern to be exactly the window width. (see updated issue in Phase 4)
+[X] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
 [X] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
 
 PHASE 3 NOTES AND INFO: 
@@ -33,7 +33,8 @@ twitter: https://twitter.com/asuatoday
 google calendar (embed code): <iframe src="https://www.google.com/calendar/embed?src=email.arizona.edu_ba85oje4iaib34bjl8hq3urli4%40group.calendar.google.com&ctz=America/Phoenix" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 Phase 4: 
-[ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely
+[ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely (no gradient) - (Alec)
+[ ] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool
 [ ] - Calendar implementation.
 [ ] - Test cross-browser & platform implementation
 Phase 5:

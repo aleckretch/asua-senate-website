@@ -1,7 +1,7 @@
 $(function() {
 	//config variables
 	var menuFadeTime = 300	
-	var slideHeight = 80;	
+	var slideHeight = 47;	
 	var hdrOffset = 0;		
 	
 	
@@ -63,7 +63,7 @@ $(function() {
 		//This adds smooth scrolling for each of the nav links, excluding the blog link
 		$( 'nav a:not(#blogLink)' ).click( function() {
 			var headID = $( this ).attr( "href" );
-			var newPosition = $( headID ).offset().top - (slideHeight * 2.5);
+			var newPosition = $( headID ).offset().top - ((slideHeight+27) * 2.5);
 			console.log( newPosition );
 			$('html,body').animate( {
 			  scrollTop: newPosition
