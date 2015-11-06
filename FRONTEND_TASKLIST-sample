@@ -37,7 +37,7 @@ Phase 4:
 [ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely (no gradient) - (Alec)
 [ ] - Calendar implementation. (Carl)
 [ ] - Test cross-browser & platform implementation (Carl)
-[ ] - Backend PHP blog skeleton (just get it printing out the input fields for now) (Dilan)
+[X] - Backend PHP blog skeleton (just get it printing out the input fields for now) (Dilan)
 [ ] - Blog aesthetic implementation (junk content) (Aaron)
 [ ] - Login page for blog.  (Other Aaron)
 [ ] - Senator roster (pics & info)
