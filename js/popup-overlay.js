@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 	// Initialize the plugin
-	$('#popup').popup({
+	$('.popup').popup({
 		opacity: 0.5
 	});
 });
@@ -9,7 +9,11 @@ $(document).ready(function() {
 $(function() {
 	$('.overlayIt').on('click',function(e) {
 		e.preventDefault();
-		$('#popup').popup('show');
+		$('.popup').popup('show');
 		//openOverlay();
 	});
+	$('.popup_close').on('click',function(e){
+		e.preventDefault();
+		$('.popup').popup('hide');
+	})
 });
