@@ -318,6 +318,48 @@
 	}
 	
 
+	/* Format Blog Section */
+	
+
+	form {
+		margin: auto;
+		width: 200px;
+		position: relative;
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: bold;
+		border: 1px solid #000;
+		padding-top: 10px;
+		padding-left: 10px;
+	}
+
+	form h2{
+		padding-bottom: 20px;
+		font-size: 22px;
+	}
+
+	input {
+		display: block;
+		height: 25px;
+		width: 170px;
+	}
+
+	input:focus{
+		border: 1px solid #000;
+	}
+
+	#login-button input{
+		height: 25px;
+		width: 75px;
+		font-size: 15px;
+		position: absolute;
+		bottom: 10px;
+		left: 55px;
+	}
+	
+
+
+
 	
 
 
