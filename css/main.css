@@ -263,33 +263,26 @@
 
 	}
 	
-	#mugshots{
+	.mugshots{
 		width: 100%;
-	}
-	
-	#mugshots tr {
-		height: 50%;
-	}
-	
-	#mugshots tr td {
-		text-align:center; 
-		vertical-align: middle;
-		height: auto;
-	}
-	
-	#mugshots tr td img{
 		margin: -3px 0 0 0;
-		width: 100%;
-		height: 90%;
+		padding: 0;
 	}
-	#mugshots tr td img:HOVER{
-		width: 98%;
-		border: solid 3px grey;
+	
+	
+	.mugshots img{
+		margin: 0 0 0 0;
+		padding: 0;
+		width: 20%;	
+	}
+	.mugshots img:HOVER{
+		width: 20%;
+		opacity: 0.8
 	}
 	
 	.popup {
 		width: 50%;
-		height: 75%;
+		height: 55%;
 		overflow: visible;
 	}
 	
