@@ -267,10 +267,14 @@
 		width: 100%;
 	}
 	
+	#mugshots tr {
+		height: 50%;
+	}
+	
 	#mugshots tr td {
 		text-align:center; 
 		vertical-align: middle;
-		height: 90%;
+		height: auto;
 	}
 	
 	#mugshots tr td img{
@@ -285,7 +289,7 @@
 	
 	.popup {
 		width: 50%;
-		height: auto;
+		height: 75%;
 		overflow: visible;
 	}
 	
