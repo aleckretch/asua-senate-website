@@ -37,4 +37,20 @@ assert ( !Database::doesUserExist( "badUser" ) );
 //tests that deleting the user created above returns a valid error code
 assert ( Database::deleteUser( "test" ) === $validError );
 
+//tests that script tags are sanitized correctly
+$str = "<script>alert( 'hello' )</script>";
+assert ( Database::sanitizeData( $str ) !== $str );
+
+//tests that sanitized data is not the same as unsanitized data
+assert ( Database::unsanitizeData( $str ) !== Database::sanitizeData( $str ) );
+
+//tests that sanitizing data twice is the same as sanitizing it once
+assert ( Database::sanitizeData( Database::sanitizeData( $str ) ) === Database::sanitizeData( $str ) );
+
+//tests that unsanitizing sanitized data gets back the original data
+assert ( Database::unsanitizeData( Database::sanitizeData( $str ) ) === $str );
+
+//just checks to see that nothing went wrong when generating a random token
+assert ( Database::randomToken() !== NULL );
+
 echo "<hr>";
