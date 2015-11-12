@@ -28,7 +28,9 @@ class Database
 		$dataSrc = "mysql:host=localhost;dbname={$dbName}";
 		try 
 		{
+			//create the connection with the parameters given
 			$conn = new PDO( $dataSrc, $dbUser , $dbPass );
+			//make associative arrays the default so that $stmt->fetch() doesn't need PDO::FETCH_ASSOC every time
 			$conn->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC );
 		} 
 		catch ( PDOException $e ) 
@@ -84,7 +86,7 @@ class Database
 	*/
 	public static function createUser( $username, $password )
 	{
-		$username = strtolower( $username );
+		$username = self::sanitizeData( strtolower( $username ) );
 		$password = self::hashPassword( $password );
 		$conn = self::connect();
 		$stmt = $conn->prepare( "INSERT INTO Users( username, password ) values( :username, :password )" );
@@ -99,7 +101,7 @@ class Database
 	*/
 	public static function doesUserExist( $username )
 	{
-		$username = strtolower( $username );
+		$username = self::sanitizeData( strtolower( $username ) );
 		$conn = self::connect();
 		$stmt = $conn->prepare( "SELECT id FROM Users WHERE username=:username" );
 		$stmt->bindParam( "username" , $username ); 
@@ -111,10 +113,11 @@ class Database
 	/*
 		Attempts to delete the user from the database.
 		Returns an error code that will be 00000 if nothing went wrong.
+		This function probably should only be used for testing purposes.
 	*/
 	public static function deleteUser( $username )
 	{
-		$username = strtolower( $username );
+		$username = self::sanitizeData( strtolower( $username ) );
 		$conn = self::connect();
 		$stmt = $conn->prepare( "DELETE FROM Users WHERE username=:username" );
 		$stmt->bindParam( "username" , $username );
@@ -156,6 +159,70 @@ class Database
 	public static function unsanitizeData( $str )
 	{
 		return ( htmlspecialchars_decode( $str, ENT_QUOTES ) );
+	}
+
+	/*
+		Creates a row for the agenda with the given name and returns the ID for it.
+	*/
+	public static function createAgenda( $name )
+	{
+		$name = self::sanitizeData( $name );
+		$conn = self::connect();
+		$stmt = $conn->prepare( "INSERT INTO Agendas( name, uploadDate, archived ) values( :name, NOW(), 0 )" );
+		$stmt->bindParam( "name" , $name ); 
+		$stmt->execute();
+		return $conn->lastInsertId();		
+	}
+
+	/*
+		Returns a 2D associative array containing all the information 
+			from the Agendas table for the corresponding archived status provided.
+		The resulting array is sorted by the upload date, with newer agendas coming before older agendas.
+		If archived is 0, returns all agendas that are not archived.
+		If archived is 1, returns all agendas that are archived.
+	*/
+	public static function getAgendas( $archived = 0 )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Agendas WHERE archived=:archived ORDER BY uploadDate DESC" );
+		$stmt->bindParam( "archived" , $archived ); 
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	/*
+		Archives the agenda with the given id.
+		If the id is null, archives all agendas currently in the table.
+	*/
+	public static function archiveAgenda( $id = NULL )
+	{
+		$conn = self::connect();
+		if ( $id === NULL )
+		{		
+			$stmt = $conn->prepare( "UPDATE Agendas SET archived=1 WHERE archived=0" );
+		}
+		else
+		{
+			$stmt =  $conn->prepare( "UPDATE Agendas SET archived=1 WHERE id=:id" );
+			$stmt->bindParam( "id" , $id );
+		}
+
+		$stmt->execute();
+		return $conn->errorCode();
+	}
+
+	/*
+		Removes all agendas from the database that have the corresponding archived value.
+		Returns errorCode, will be 00000 if nothing went wrong.
+		This function probably should only be used for testing purposes.
+	*/
+	public static function removeAgendas( $archived = 1 )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "DELETE FROM Agendas WHERE archived=:archived" );
+		$stmt->bindParam( "archived" , $archived ); 
+		$stmt->execute();
+		return $stmt->errorCode();
 	}
 }
 

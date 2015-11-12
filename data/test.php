@@ -16,6 +16,15 @@ assert ( !Database::samePassword( "badPassword" , Database::hashPassword( "testi
 //tests creating a user returns a valid error code
 assert ( Database::createUser( "test" , "testing" ) === $validError );
 
+//tests creating a user with a script tag as username returns a valid error code
+assert ( Database::createUser( "<script>" , "testing" ) === $validError );
+
+//tests that the user created with a script tag as username actually exists
+assert ( Database::doesUserExist( "<script>" ) );
+
+//tests whether the sanitized script tag was actually the username
+assert ( Database::doesUserExist( Database::sanitizeData( "<script>" ) ) );
+
 //tests if the user just created now exists
 assert ( Database::doesUserExist( "test" ) );
 
@@ -52,5 +61,59 @@ assert ( Database::unsanitizeData( Database::sanitizeData( $str ) ) === $str );
 
 //just checks to see that nothing went wrong when generating a random token
 assert ( Database::randomToken() !== NULL );
+
+//test that deleting all non-archived agendas returns valid error
+assert( Database::removeAgendas( 0 ) === $validError );
+
+//test that there are no longer any non-archived agendas
+assert ( count( Database::getAgendas( 0 ) ) === 0 );
+
+//test that deleting all archived agendas returns valid error
+assert( Database::removeAgendas( 1 ) === $validError );
+
+//test that there are no longer any archived agendas
+assert ( count( Database::getAgendas( 1 ) ) === 0 );
+
+//create a new agenda and get the id
+$id = Database::createAgenda( "<script>" );
+
+//test that creating an agenda gives back a valid id
+assert ( $id !== NULL );
+
+//test that there is at least one agenda that is not archived
+assert ( count( Database::getAgendas( 0 ) ) !== 0 );
+
+//test that there are no agendas that are archived
+assert ( count( Database::getAgendas( 1 ) ) === 0 );
+
+//test that archiveAgenda with valid id returns a validError code
+assert ( Database::archiveAgenda( $id ) === $validError );
+
+//test that there are no longer any non-archived agendas
+assert ( count( Database::getAgendas( 0 ) ) === 0 );
+
+//test that there are at least one archived agenda
+assert ( count( Database::getAgendas( 1 ) ) !== 0 );
+
+//create a new agenda and get the id
+$newID = Database::createAgenda( "<script>More</script>" );
+
+//test that creating another agenda returns a different id
+assert ( $newID !== NULL && $newID !== $id );
+
+//test that there are now at least one non-archived agenda
+assert ( count( Database::getAgendas( 0 ) ) !== 0 );
+
+//test that there are now at least one archived agenda
+assert ( count( Database::getAgendas( 1 ) ) !== 0 );
+
+//test that archiving all the agendas returns back a valid code
+assert ( Database::archiveAgenda() === $validError );
+
+//test that there are no longer any non-archived agendas
+assert ( count( Database::getAgendas( 0 ) ) === 0 );
+
+//test that there are at least one archived agenda
+assert ( count( Database::getAgendas( 1 ) ) !== 0 );
 
 echo "<hr>";
