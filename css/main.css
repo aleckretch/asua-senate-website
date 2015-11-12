@@ -274,10 +274,12 @@
 		margin: 0 0 0 0;
 		padding: 0;
 		width: 20%;	
+		cursor: pointer;
 	}
 	.mugshots img:HOVER{
 		width: 20%;
-		opacity: 0.8
+		opacity: 0.8;
+		cursor: pointer;
 	}
 	
 	.popup {
@@ -307,6 +309,7 @@
 		position: absolute;
 		top: -25px;
 		left: 100%;
+		cursor: pointer;
 	}
 	
 	.popup_info {
