@@ -108,12 +108,58 @@ assert ( count( Database::getAgendas( 0 ) ) !== 0 );
 assert ( count( Database::getAgendas( 1 ) ) !== 0 );
 
 //test that archiving all the agendas returns back a valid code
-assert ( Database::archiveAgenda() === $validError );
+assert ( Database::archiveAllAgendas() === $validError );
 
 //test that there are no longer any non-archived agendas
 assert ( count( Database::getAgendas( 0 ) ) === 0 );
 
 //test that there are at least one archived agenda
 assert ( count( Database::getAgendas( 1 ) ) !== 0 );
+
+//delete all former blog posts for testing purposes
+assert ( Database::deleteAllPosts() === $validError );
+
+//make sure there are no blog posts after deletion
+assert ( count( Database::getPosts() ) === 0 );
+
+//make sure creating a blog post works and returns an id
+$postID = Database::createBlogPost( "Title" , "Here is some content." );
+assert ( $postID !== NULL );
+
+//make sure there is 1 post that has been created
+assert ( count( Database::getPosts() ) === 1 );
+
+//create another blog post and make sure it has valid id
+$title = "<script>alert( 'hello' )</script>";
+$newID = Database::createBlogPost( "<script>alert( 'hello' )</script>" , "XSS in title." );
+assert ( $newID !== NULL );
+
+//check that there are now two posts
+assert ( count( Database::getPosts() ) === 2 );
+
+//check that the title of the new post was properly sanitized
+$postRow = Database::getPost( $newID );
+assert ( isset( $postRow[ "title" ] ) && $postRow[ "title" ] !== $title );
+assert ( isset( $postRow[ "title" ] ) && $postRow[ "title" ] === Database::sanitizeData( $title ) );
+
+//make sure that deleting a post returns a valid error code
+assert ( Database::deleteBlogPost( $newID ) === $validError );
+
+//make sure that there is only 1 post left
+assert ( count( Database::getPosts() ) === 1 );
+
+//make sure that getPost works with a invalid id
+$postRow = Database::getPost( $newID );
+assert ( !isset( $postRow[ "title" ] ) );
+
+//create the post again
+$newID = Database::createBlogPost( "<script>alert( 'hello' )</script>" , "XSS in title." );
+assert ( $newID !== NULL );
+
+//make sure deleting all posts returns a valid error
+assert ( Database::deleteAllPosts() === $validError );
+
+//make sure there are no posts left
+assert ( count( Database::getPosts() ) === 0 );
 
 echo "<hr>";

@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS senate;
-CREATE DATABASE senate;
-USE senate;
+DROP DATABASE IF EXISTS SENATE;
+CREATE DATABASE SENATE;
+USE SENATE;
 
 /*
 	This holds the username and hashed password for the users.
@@ -26,4 +26,16 @@ CREATE TABLE Agendas
 	name		varchar( 200 ) NOT NULL,
 	uploadDate	datetime NOT NULL,
 	archived	tinyint(1) NOT NULL
+);
+
+/*
+	This will hold the information associated with blog posts.
+*/
+DROP TABLE IF EXISTS Posts;
+CREATE TABLE Posts
+(
+	id		int NOT NULL auto_increment primary key,
+	title		varchar( 500 ) NOT NULL,
+	content		text NOT NULL,
+	datePosted	datetime NOT NULL
 );

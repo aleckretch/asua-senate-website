@@ -10,7 +10,7 @@ class Database
 	*/
 	public static function connect()
 	{
-		$dbName = "senate";
+		$dbName = "SENATE";
 
 		//TODO: store this somewhere so that it cannot be accessed except outside the root folder
 		//Do not have a empty password for the root user when deployed
@@ -194,19 +194,23 @@ class Database
 		Archives the agenda with the given id.
 		If the id is null, archives all agendas currently in the table.
 	*/
-	public static function archiveAgenda( $id = NULL )
+	public static function archiveAgenda( $id )
 	{
 		$conn = self::connect();
-		if ( $id === NULL )
-		{		
-			$stmt = $conn->prepare( "UPDATE Agendas SET archived=1 WHERE archived=0" );
-		}
-		else
-		{
-			$stmt =  $conn->prepare( "UPDATE Agendas SET archived=1 WHERE id=:id" );
-			$stmt->bindParam( "id" , $id );
-		}
+		$stmt =  $conn->prepare( "UPDATE Agendas SET archived=1 WHERE id=:id" );
+		$stmt->bindParam( "id" , $id );
+		$stmt->execute();
+		return $conn->errorCode();
+	}
 
+	/*
+		Archives all agendas currently in the table.
+		Returns errorCode, will be 00000 if nothing went wrong.
+	*/
+	public static function archiveAllAgendas()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "UPDATE Agendas SET archived=1 WHERE archived=0" );
 		$stmt->execute();
 		return $conn->errorCode();
 	}
@@ -223,6 +227,71 @@ class Database
 		$stmt->bindParam( "archived" , $archived ); 
 		$stmt->execute();
 		return $stmt->errorCode();
+	}
+
+	/*
+		Creates a blog post with the title and content provided.
+		Returns the id of the blog post that was created.
+	*/
+	public static function createBlogPost( $title, $content )
+	{
+		$conn = self::connect();
+		$str = "INSERT INTO Posts( title, content, datePosted ) VALUES( :title, :content, NOW() )";
+		$stmt = $conn->prepare( $str );
+		$stmt->bindParam( "title" , self::sanitizeData( $title ) );
+		$stmt->bindParam( "content" , self::sanitizeData( $content ) );
+		$stmt->execute();
+		return $conn->lastInsertId();
+	}
+
+	/*
+		Deletes the blog post with the id provided.
+		Returns errorCode, will be 00000 if nothing went wrong.
+	*/
+	public static function deleteBlogPost( $postID )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "DELETE FROM Posts WHERE id=:id" );
+		$stmt->bindParam( "id" , $postID ); 
+		$stmt->execute();
+		return $stmt->errorCode();
+	}
+	
+	/*
+		Deletes all blog posts currently in the table.
+		Should only be used for testing purposes.
+		Returns errorCode, will be 00000 if nothing went wrong.
+	*/
+	public static function deleteAllPosts()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "DELETE FROM Posts" );
+		$stmt->execute();
+		return $stmt->errorCode();
+	}
+
+	/*
+		Returns all the blog posts currently in the table.
+		The resulting array is sorted by the creation date, with newer posts coming before older posts.
+	*/
+	public static function getPosts()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Posts ORDER BY datePosted DESC" );
+		$stmt->execute();
+		return $stmt->fetchAll();		
+	}
+
+	/*
+		Returns array containing information on the blog post that has the id provided.
+	*/
+	public static function getPost( $id )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Posts WHERE id=:id" );
+		$stmt->bindParam( "id" , $id );
+		$stmt->execute();
+		return $stmt->fetch();
 	}
 }
 
