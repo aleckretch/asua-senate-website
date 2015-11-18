@@ -277,7 +277,7 @@ class Database
 	public static function getPosts()
 	{
 		$conn = self::connect();
-		$stmt = $conn->prepare( "SELECT * FROM Posts ORDER BY datePosted DESC" );
+		$stmt = $conn->prepare( "SELECT * FROM Posts ORDER BY datePosted DESC,id DESC" );
 		$stmt->execute();
 		return $stmt->fetchAll();		
 	}
@@ -292,6 +292,137 @@ class Database
 		$stmt->bindParam( "id" , $id );
 		$stmt->execute();
 		return $stmt->fetch();
+	}
+
+	/*
+		Returns the last $limit posts from the blog before the id provided.
+		So given an id of 5 and a limit of 2, will return posts that have id of 3 and 4.
+		The posts returned are ordered by newer posts coming before older posts.
+	*/
+	public static function getPostsBeforeID( $id , $limit = 3 )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Posts WHERE id>:first AND id<:last ORDER by datePosted DESC,id DESC" );
+		$stmt->bindParam( "last" , $id );
+		$val = ( $id - $limit ) - 1;
+		$stmt->bindParam( "first" , $val );
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	/*
+		Returns array of all the office hours in the hours table for the id provided.
+		Using a join would probably be better, but the SQL for this case eludes me.
+	*/
+	public static function getOfficeHours( $id )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM OfficeHours WHERE RosterID=:id" );
+		$stmt->bindParam( "id" , $id );
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	/*
+		Returns an array that holds the information for all the senators.
+		Inside each row is also another array in the hours column that holds the office hours for that senator.
+	*/
+	public static function getEntireRoster()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT id,name,origin,major,letter FROM Roster" );
+		$stmt->execute();
+		$results = $stmt->fetchAll();
+		foreach ( $results as $key=>$row )
+		{
+			$results[ $key ][ "hours" ] = self::getOfficeHours( $row[ "id" ] );
+		}
+		return $results;
+	}
+
+	/*
+		Adds a senator to the Roster with the info provided.
+		Returns an error code, either for the insertion of the office hours if something went wrong
+			 or for this insertion if something/nothing went wrong with it.
+		All the parameters are just strings except for the officeHours which is an array.
+		Here is an example of the format for the office hours:
+		$office = array();
+		$office[] = array( 
+			"day" => "wednesday",
+			"start" => 8,
+			"end" => 12
+		);
+	*/
+	public static function addToRoster( $name, $major, $letter, $origin, $officeHours )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "INSERT INTO Roster( name, major, letter, origin ) values( :name, :major, :letter, :origin )" );
+		$stmt->bindParam( "name" , self::sanitizeData( $name ) );
+		$stmt->bindParam( "major" , self::sanitizeData( $major ) );
+		$stmt->bindParam( "letter" , self::sanitizeData( $letter ) );
+		$stmt->bindParam( "origin" , self::sanitizeData( $origin ) );
+		$stmt->execute();
+		$error = $stmt->errorCode();
+		$id = $conn->lastInsertId();
+		$error2 = self::addOfficeHours( $id , $officeHours );
+		if ( $error2 !== "00000" )
+		{
+			return $error2;
+		}
+
+		return $error;
+	}
+
+	/*
+		Adds office hours for the senator with the id provided.	
+		Returns an error code if something went wrong with any of the office hours inserted or 00000 otherwise.
+		Will stop inserting office hours if along the way one insertion resulted in a non valid error code.
+		Here is an example of the format for the office hours:
+			$office = array();
+			$office[] = array( 
+				"day" => "wednesday",
+				"start" => 8,
+				"end" => 12
+			);
+		//Offices hours from 3pm(15:00) to 5pm(17:00) on friday:
+			$office = array();
+			$office[] = array( 
+				"day" => "friday",
+				"start" => 15,
+				"end" => 17
+			);
+	*/
+	private static function addOfficeHours( $id, $officeHours )
+	{
+		$conn = self::connect();
+		foreach( $officeHours as $row )
+		{
+			$stmt = $conn->prepare( "INSERT INTO OfficeHours( day, startHour, endHour, RosterID ) values( :day, :start, :end, :id )" );
+			$stmt->bindParam( "day" , self::sanitizeData( $row[ "day" ] ) );
+			$stmt->bindParam( "start" , $row[ "start" ] );
+			$stmt->bindParam( "end" , $row[ "end" ] );
+			$stmt->bindParam( "id" , $id );
+			$stmt->execute();
+			$error = $stmt->errorCode();
+			if ( $error !== "00000" )
+			{
+				return $error;
+			}	
+		}
+		return "00000";
+	}
+
+	/*
+		Deletes all the senators from the Roster table.
+		MySQL will also delete their office hours because ON DELETE CASCADE for RosterID in OfficeHours table
+		Should only be used for testing purposes/once a year for new senators?
+	*/
+	public static function clearRoster()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "DELETE FROM Roster" );
+		$stmt->execute();
+		return $stmt->errorCode();
 	}
 }
 

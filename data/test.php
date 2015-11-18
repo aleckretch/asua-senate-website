@@ -131,7 +131,7 @@ assert ( count( Database::getPosts() ) === 1 );
 
 //create another blog post and make sure it has valid id
 $title = "<script>alert( 'hello' )</script>";
-$newID = Database::createBlogPost( "<script>alert( 'hello' )</script>" , "XSS in title." );
+$newID = Database::createBlogPost( $title, "XSS in title." );
 assert ( $newID !== NULL );
 
 //check that there are now two posts
@@ -141,6 +141,22 @@ assert ( count( Database::getPosts() ) === 2 );
 $postRow = Database::getPost( $newID );
 assert ( isset( $postRow[ "title" ] ) && $postRow[ "title" ] !== $title );
 assert ( isset( $postRow[ "title" ] ) && $postRow[ "title" ] === Database::sanitizeData( $title ) );
+
+//There are two posts in the database
+//Given a limit of two, there would be only one post before the newest
+$postsBefore = Database::getPostsBeforeID( $newID , 2 );
+assert ( count( $postsBefore ) === 1 );
+
+//Check that getPostsBeforeID returns the correct post
+assert ( isset( $postsBefore[ 0 ] ) && isset( $postsBefore[ 0 ][ "id" ] ) && $postsBefore[ 0 ][ 'id' ] === $postID );
+
+//There are two posts in the database
+//Given a limit of two and newID + 1, there would be two posts
+$postsBefore = Database::getPostsBeforeID( $newID + 1 , 2 );
+assert ( count( $postsBefore ) === 2 );
+
+//makes sure that the ordering for getPostsBeforeID is by newest first
+assert ( isset( $postsBefore[ 0 ] ) && isset( $postsBefore[ 0 ][ "id" ] ) && $postsBefore[ 0 ][ 'id' ] == $newID );
 
 //make sure that deleting a post returns a valid error code
 assert ( Database::deleteBlogPost( $newID ) === $validError );
@@ -161,5 +177,68 @@ assert ( Database::deleteAllPosts() === $validError );
 
 //make sure there are no posts left
 assert ( count( Database::getPosts() ) === 0 );
+
+//clear the roster for testing, also test that clearRoster works
+assert ( Database::clearRoster() === $validError );
+
+//make sure that clearRoster ends up with no records left in Roster table
+assert ( count( Database::getEntireRoster() ) === 0 );
+
+//Test that addToRoster returns a valid error code, test with no office hours
+assert ( Database::addToRoster( "Test" , "Test" , "Test" , "Test City" , array() ) === $validError );
+
+//test that there is one more record now
+assert ( count( Database::getEntireRoster() ) === 1 );
+
+//get the office hours array setup for inserting
+$office = array();
+$office[] = array( 
+	"day" => "monday",
+	"start" => 15,
+	"end" => 17
+);
+$office[] = array( 
+	"day" => "tuesday",
+	"start" => 9,
+	"end" => 12
+);
+
+//test inserting with office hours, should return valid error code
+assert ( Database::addToRoster( "Tester2" , "test" , "test" , "Test Town" , $office ) === $validError );
+
+//test that something was inserted into the roster
+assert ( count( Database::getEntireRoster() ) === 2 );
+
+//setup the office hours array again with different values
+$office = array();
+$office[] = array( 
+	"day" => "wednesday",
+	"start" => 8,
+	"end" => 12
+);
+$office[] = array( 
+	"day" => "tuesday",
+	"start" => 12,
+	"end" => 17
+);
+
+//Add another record to the roster table
+assert ( Database::addToRoster( "Tester3" , "test more" , "test <script>alert('hello')</script>" , "Testbay" , $office ) === $validError );
+
+//make sure there are now three records
+assert ( count( Database::getEntireRoster() ) === 3 );
+
+//clear the roster to end testing
+assert ( Database::clearRoster() === $validError );
+
+//make sure that clearRoster ends up with no records left in Roster table
+assert ( count( Database::getEntireRoster() ) === 0 );
+
+/*
+//This prints out the records from the roster table, just to glance that it looks right
+echo "<pre>";
+print_r( Database::getEntireRoster() );
+echo "</pre>";
+*/
 
 echo "<hr>";

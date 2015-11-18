@@ -41,3 +41,26 @@ CREATE TABLE Posts
 	content		text NOT NULL,
 	datePosted	datetime NOT NULL
 );
+
+DROP TABLE IF EXISTS Roster;
+CREATE TABLE Roster
+(
+	id		int NOT NULL auto_increment primary key,
+	name		varchar( 100 ) NOT NULL,
+	major		varchar( 100 ) NOT NULL,
+	origin		varchar( 100 ) NOT NULL,
+	letter		text NOT NULL
+);
+
+DROP TABLE IF EXISTS OfficeHours;
+Create TABLE OfficeHours
+(
+	day		varchar( 20 ) NOT NULL,
+	startHour	int NOT NULL,
+	endHour		int NOT NULL,
+	RosterID	int NOT NULL,
+	primary key( RosterID , day ),
+	FOREIGN KEY (RosterID)
+	REFERENCES Roster(id)
+	ON DELETE CASCADE
+);
