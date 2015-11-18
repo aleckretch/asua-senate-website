@@ -64,3 +64,8 @@ Create TABLE OfficeHours
 	REFERENCES Roster(id)
 	ON DELETE CASCADE
 );
+
+/*
+	This is for testing purposes, the password is blank because using webauth to login using NetID, never stores password.
+*/
+INSERT INTO Users( username, password ) values( 'djenkins1' , '' );
