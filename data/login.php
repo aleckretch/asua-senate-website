@@ -11,20 +11,23 @@ session_start();
 //change the address in the string when we have webspace
 $service = urlencode( "http://localhost/asua-senate-website/data/login.php" );
 
+//The banner string is passed along in the request and shows on the NetID login page
+$banner = urlencode( "ASUA Senate Website" );
 if ( !isset( $_GET['ticket'] ) && !isset( $_SESSION['user'] ) )
 {
 	//redirect to login page for webauth passing along a callback url as the service
-	header( "Location: https://webauth.arizona.edu/webauth/login?service={$service}" );
+	header( "Location: https://webauth.arizona.edu/webauth/login?service={$service}&banner={$banner}" );
 }
 else if ( isset( $_GET['ticket'] ) && !isset( $_SESSION['user'] ) )
 {
 	//received a ticket parameter
+	$ticket = urlencode( $_GET['ticket'] );
 
 	//use curl to send a get request to webauth to validate the ticket and service
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 	    CURLOPT_RETURNTRANSFER => 1,
-	    CURLOPT_URL => "https://webauth.arizona.edu/webauth/validate?service={$service}&ticket={$_GET['ticket']}"
+	    CURLOPT_URL => "https://webauth.arizona.edu/webauth/validate?service={$service}&ticket={$ticket}"
 	));
 	$response = curl_exec( $curl );
 
@@ -46,22 +49,25 @@ else if ( isset( $_GET['ticket'] ) && !isset( $_SESSION['user'] ) )
 	//if the first line of the request is the word yes, then the next line will be the username
 	if ( $response[ 0 ] === "yes" )
 	{
-		//if the username received from the request is allowed to login as an admin, then save their username in the session
-		//redirect to a page
+		//if the username received from the request is allowed to login as an admin, 
+		//	then save their username in the session
 		if ( Database::doesUserExist( $response[ 1 ] ) )
 		{
 			$_SESSION['user'] = $response[ 1 ];
+			//redirect to this page afterwards, should then show way to upload blog post/agenda/roster
 			header( "Location: login.php" );
 			exit();		
 		}
 		else
 		{
-			echo "Invalid user: {$response[ 1 ]}";
+			//the username received isn't in the whitelist of users, so show them an error
+			echo "The NetID {$response[ 1 ]} does not have permission to view this page.";
 		}
 	}
 	else
 	{
-		echo "Not a yes";
+		//the response showed an invalid ticket, show an error
+		echo "Could not login via webauth.";
 	}
 }
 else if ( isset( $_SESSION['user'] ) )
@@ -70,5 +76,5 @@ else if ( isset( $_SESSION['user'] ) )
 }
 else
 {
-	echo "Why am i Here";
+	die( "Default case reached" );
 }

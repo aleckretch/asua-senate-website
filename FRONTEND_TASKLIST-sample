@@ -44,7 +44,7 @@ Phase 4:
 [ ] - Make temp database. (Aaron)
 [ ] - Change font color on overlays to blue and change the font-family to something a little more like the rest of the page (Chris) 
 [ ] - Blog aesthetic implementation (junk content) (Header, date, name and blog entry) (Other Aaron)
-[ ] - Roster fields for database - Name, major, from(city), office hours(days of week, from-to), Letter
+[X] - Roster fields for database - Name, major, from(city), office hours(days of week, from-to), Letter
 [/] - Senator roster (pics & info)
 [ ] - Create template pages for roster upload with dynamic office hour fields (days & times) (Carl)
 [ ] - Create template pages for Agenda and Blog upload (UNASSIGNED)
