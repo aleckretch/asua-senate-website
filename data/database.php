@@ -191,6 +191,18 @@ class Database
 	}
 
 	/*
+		Returns an array of key value pairs for the row with the id provided that is in the agenda table.
+	*/
+	public static function getAgendaFromID( $id )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Agendas WHERE id=:id" );
+		$stmt->bindParam( "id" , $id ); 
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
+	/*
 		Archives the agenda with the given id.
 		If the id is null, archives all agendas currently in the table.
 	*/
