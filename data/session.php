@@ -18,18 +18,21 @@ class Session
 	}
 
 	/*
-		If no username parameter was passed then this returns the current user in the session.
-		Otherwise, this sets the current user to the user provided and returns their username back
+		Returns the current user in the session.
 	*/
-	public static function user( $username = NULL )
+	public static function user()
 	{
-		if ( $username === NULL )
-		{
-			return ( self::userLoggedIn() ? $_SESSION['user'] : NULL );
-		}
+		return ( self::userLoggedIn() ? $_SESSION['user'] : NULL );
+	}
 
+	/*
+		Sets the username of the current user in the session.
+	*/
+	private static function setUser( $username )
+	{
+		session_regenerate_id( true );
 		$_SESSION['user'] = $username;
-		return $_SESSION['user'];
+		return $_SESSION['user'];		
 	}
 
 	/*
@@ -45,7 +48,7 @@ class Session
 		{
 			if ( Database::doesUserExist( $username ) )
 			{
-				self::user( $username );
+				self::setUser( $username );
 				return true;
 			}
 			return false;
@@ -53,9 +56,56 @@ class Session
 
 		if ( Database::verifyUser( $username, $password ) )
 		{
-			self::user( $username );
+			self::setUser( $username );
 			return true;
 		}
 		return false;
+	}
+
+	/*
+		Returns true if the CSRF token in the session hashes to the token provided.
+	*/
+	public static function verifyToken( $token )
+	{
+		if ( !isset( $_SESSION['token'] ) )
+		{
+			self::generateToken();
+			return false;
+		}
+
+		return ( Database::samePassword( $_SESSION['token'] , $token ) === true );
+	}
+
+	/*
+		Generates a new CSRF token and puts it in the session.
+	*/
+	private static function generateToken()
+	{
+		$_SESSION['token'] = Database::randomToken();
+	}
+
+	/*
+		Returns a hashed form of the CSRF token from the session.
+		Will generate the token if it does not exist already.
+	*/
+	public static function token()
+	{
+		if ( !isset( $_SESSION['token'] ) )
+		{
+			self::generateToken();
+		}
+		return Database::hashPassword( $_SESSION['token'] );
+	}
+
+	/*
+		Destroys the session and unsets all the data for the session, effectively logging the user out.
+		Also regenerates the session id afterwards for a little extra security.
+	*/
+	public static function logoutUser()
+	{
+		session_unset();
+		session_destroy();
+		setcookie( session_name(),'',0,'/' );
+		session_regenerate_id( true );
 	}
 }

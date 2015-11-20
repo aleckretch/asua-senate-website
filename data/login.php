@@ -69,6 +69,10 @@ else if ( isset( $_GET['ticket'] ) && !Session::userLoggedIn() )
 		echo "Could not login via webauth.";
 	}
 }
+else if ( Session::userLoggedIn() && isset( $_GET['logout'] ) )
+{
+	Session::logoutUser();
+}
 else if ( Session::userLoggedIn() )
 {
 	echo Session::user() . " is logged in";
