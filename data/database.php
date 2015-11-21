@@ -245,13 +245,14 @@ class Database
 		Creates a blog post with the title and content provided.
 		Returns the id of the blog post that was created.
 	*/
-	public static function createBlogPost( $title, $content )
+	public static function createBlogPost( $author, $title, $content )
 	{
 		$conn = self::connect();
-		$str = "INSERT INTO Posts( title, content, datePosted ) VALUES( :title, :content, NOW() )";
+		$str = "INSERT INTO Posts( author, title, content, datePosted ) VALUES( :author, :title, :content, NOW() )";
 		$stmt = $conn->prepare( $str );
 		$stmt->bindParam( "title" , self::sanitizeData( $title ) );
 		$stmt->bindParam( "content" , self::sanitizeData( $content ) );
+		$stmt->bindParam( "author" , self::sanitizeData( $author ) );
 		$stmt->execute();
 		return $conn->lastInsertId();
 	}

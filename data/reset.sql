@@ -37,6 +37,7 @@ DROP TABLE IF EXISTS Posts;
 CREATE TABLE Posts
 (
 	id		int NOT NULL auto_increment primary key,
+	author		varchar( 100 ) NOT NULL,
 	title		varchar( 500 ) NOT NULL,
 	content		text NOT NULL,
 	datePosted	datetime NOT NULL

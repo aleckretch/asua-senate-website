@@ -123,7 +123,7 @@ assert ( Database::deleteAllPosts() === $validError );
 assert ( count( Database::getPosts() ) === 0 );
 
 //make sure creating a blog post works and returns an id
-$postID = Database::createBlogPost( "Title" , "Here is some content." );
+$postID = Database::createBlogPost( "dilan" , "Title" , "Here is some content." );
 assert ( $postID !== NULL );
 
 //make sure there is 1 post that has been created
@@ -131,7 +131,7 @@ assert ( count( Database::getPosts() ) === 1 );
 
 //create another blog post and make sure it has valid id
 $title = "<script>alert( 'hello' )</script>";
-$newID = Database::createBlogPost( $title, "XSS in title." );
+$newID = Database::createBlogPost( "dilan" , $title, "XSS in title." );
 assert ( $newID !== NULL );
 
 //check that there are now two posts
@@ -169,7 +169,7 @@ $postRow = Database::getPost( $newID );
 assert ( !isset( $postRow[ "title" ] ) );
 
 //create the post again
-$newID = Database::createBlogPost( "<script>alert( 'hello' )</script>" , "XSS in title." );
+$newID = Database::createBlogPost( "dilan" , "<script>alert( 'hello' )</script>" , "XSS in title." );
 assert ( $newID !== NULL );
 
 //make sure deleting all posts returns a valid error
