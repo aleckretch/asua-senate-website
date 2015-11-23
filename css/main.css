@@ -263,6 +263,22 @@
 
 	}
 	
+	h6 {
+		font-family: 'bebas_neueregular';
+		font-size: 24px;
+	}
+	
+	.nameOverlay1 {
+		width: 20%;
+		background: black;
+		position: relative;
+		top: 0;
+		text-align: center;
+		font-size: 25px;
+		opacity: 0.8;
+		color: white;
+	}
+	
 	.mugshots{
 		width: 100%;
 		margin: -3px 0 0 0;
@@ -283,7 +299,8 @@
 	}
 	
 	.popup {
-		width: 50%;
+		font-family: 'verdana';
+		width: 65%;
 		height: 55%;
 		overflow: visible;
 	}
@@ -292,15 +309,14 @@
 		background: white;
 		width: 100%;
 		height: 100%;
-		color: purple;
+		color: #233e76;
 		padding: 20px;
 		overflow: auto;
 	}
 	
 	.popup_mugshot {
-		height: 150px;
-		width: 150px;
-		float: left;
+		height: auto;
+		width: 100%;
 	}
 	
 	.popup_close {
@@ -314,10 +330,26 @@
 	
 	.popup_info {
 		text-align: center;
-		height: 150px;
+		float: left;
+		padding: 0;
+		width: 30%;
 	}
 	
-
+	.popup_text {
+		float: right;
+		width: 69%
+	}
+	
+	/*
+	.popup dl {
+		text-align: left;
+	}
+	
+	.popup dl dd {
+		padding: 0 0 0 20px;
+	}
+	*/
+	
 	/* Format Blog Section */
 	
 
