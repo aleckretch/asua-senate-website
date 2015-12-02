@@ -297,6 +297,8 @@
 		padding: 0;
 		width: 20%;	
 		cursor: pointer;
+		border: solid 5px #233e76;
+		box-sizing: border-box;
 	}
 	.mugshots img:HOVER{
 		width: 20%;
