@@ -203,6 +203,18 @@ class Database
 	}
 
 	/*
+		Returns an array of key value pairs for the most recent agenda from the agendas table.
+		
+	*/
+	public static function getMostRecentAgenda()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Agendas WHERE archived=0 ORDER BY uploadDate DESC LIMIT 1" );
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
+	/*
 		Archives the agenda with the given id.
 		If the id is null, archives all agendas currently in the table.
 	*/

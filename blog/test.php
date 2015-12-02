@@ -86,6 +86,9 @@ assert ( count( Database::getAgendas( 0 ) ) !== 0 );
 //test that there are no agendas that are archived
 assert ( count( Database::getAgendas( 1 ) ) === 0 );
 
+$result = Database::getMostRecentAgenda();
+assert ( isset( $result[ "name" ] ) && $result["name"] === Database::sanitizeData( "<script>" ) ); 
+
 //test that archiveAgenda with valid id returns a validError code
 assert ( Database::archiveAgenda( $id ) === $validError );
 

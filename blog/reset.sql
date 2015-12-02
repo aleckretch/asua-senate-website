@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS SENATE;
 CREATE DATABASE SENATE   
-	DEFAULT CHARACTER SET utf8
- 	DEFAULT COLLATE utf8_general_ci;
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
 USE SENATE;
 
 /*
@@ -56,17 +56,12 @@ CREATE TABLE Roster
 DROP TABLE IF EXISTS OfficeHours;
 Create TABLE OfficeHours
 (
+	id		int NOT NULL auto_increment primary key,
 	day		varchar( 20 ) NOT NULL,
 	startHour	int NOT NULL,
 	endHour		int NOT NULL,
 	RosterID	int NOT NULL,
-	primary key( RosterID , day ),
 	FOREIGN KEY (RosterID)
 	REFERENCES Roster(id)
 	ON DELETE CASCADE
 );
-
-/*
-	This is for testing purposes, the password is blank because using webauth to login using NetID, never stores password.
-*/
-INSERT INTO Users( username, password ) values( 'djenkins1' , '' );
