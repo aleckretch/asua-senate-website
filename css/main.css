@@ -254,7 +254,6 @@
 		padding-bottom: 5px;
 	}
 
-
 	.icon-square i{
 		
 		font-size: 2em;
@@ -263,26 +262,33 @@
 
 	}
 	
+	/*	Popup Format */
+	
 	h6 {
 		font-family: 'bebas_neueregular';
 		font-size: 24px;
 	}
 	
-	.nameOverlay1 {
+	.nameOverlay {
 		width: 20%;
 		background: black;
 		position: relative;
-		top: 0;
+		top: -28px;
 		text-align: center;
 		font-size: 25px;
 		opacity: 0.8;
 		color: white;
+		display: inline;
 	}
 	
 	.mugshots{
 		width: 100%;
-		margin: -3px 0 0 0;
+		margin: 0 0 0 0;
 		padding: 0;
+	}
+	
+	.ms2{
+		margin: -3px 0 0 0;
 	}
 	
 	
@@ -300,8 +306,8 @@
 	
 	.popup {
 		font-family: 'verdana';
-		width: 65%;
-		height: 55%;
+		width: 55%;
+		height: 75%;
 		overflow: visible;
 	}
 	
@@ -349,6 +355,9 @@
 		padding: 0 0 0 20px;
 	}
 	*/
+	
+	
+	
 	
 	/* Format Blog Section */
 	
