@@ -46,12 +46,13 @@ Phase 4:
 [X] - Roster fields for database - Name, major, from(city), office hours(days of week, from-to), Letter
 [/] - Senator roster (pics & info) 
 [ ] - Create template pages for roster upload with dynamic office hour fields (days & times) (Carl)
-[ ] - Create template pages for Agenda and Blog upload (Chris)
+[ ] - Create template pages for Agenda and Blog upload (Carl)
 [X] - Fix margin width for main body. (Aaron)
 [X] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool (Chris)
 [X] - Crop pics and save for thumbnails and also upload full portrait and put on overlay (Chris)
-[ ] - Make JSON handler for backend. (Carl)
+[ ] - Make JSON handler for backend. (Dilan)
 [ ] - Safari layout bug. (Aaron)
+[ ] - Calendar schema (Carl)
   
 
 Blog Implementation brainstorm: 
