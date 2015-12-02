@@ -4,8 +4,8 @@
     <title>ASUA Senate Blog</title>
     <link rel="stylesheet" href="../css/fonts/specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../css/fonts/stylesheet.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <script src="../js/jquery-2.1.4.min.js"></script>
     <script src="../js/jquery.popupoverlay.js"></script>
 	<script>
@@ -35,13 +35,15 @@
 						$('#blogHead').append(theThing);
 						break;
 					case 'blog':
+						//More of the same.
 						$('<button class="newThing">WHOA NELLY!</button>').appendTo('#blogHead');
 						break;
 					case 'agenda':
+						//blah blah...
 						$('<h1 class="newThing">DUDE!<h1>').appendTo('#blogHead');
 						break;
 					default:
-						console.log(option);
+						console.log(option);	//always good to have a default case. Saves headaches for those weird issues.
 						break;				
 				}
 			
@@ -53,9 +55,9 @@
 <body>
     <!-- Start Blog Login Page -->
     
-    
+ 
     <article id="blogHead" class="blog-section main-article">
-<!-- 
+ <!--   
         <h1>Blog</h1>
         <form action="login.php" method="post">
             <h2>User Login</h2>
