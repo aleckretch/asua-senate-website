@@ -332,6 +332,9 @@ class Database
 		return $stmt->fetch();
 	}
 
+	/*
+		Returns the columns for the most recent blog post
+	*/
 	public static function getMostRecentPost()
 	{
 		$conn = self::connect();
@@ -369,6 +372,9 @@ class Database
 		return $stmt->fetchAll();
 	}
 
+	/*
+		Returns the columns for the senator with the id provided.
+	*/
 	public static function getRosterFromID( $id )
 	{
 		$conn = self::connect();
@@ -491,7 +497,7 @@ class Database
 	public static function downloadLink( $id )
 	{
 		$id = urlencode( self::sanitizeData( $id ) );
-		return "download.php?id={$id}";
+		return "blog/download.php?id={$id}";
 	}
 
 	/*
