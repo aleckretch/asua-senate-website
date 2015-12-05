@@ -162,14 +162,14 @@ class Database
 	}
 
 	/*
-		Creates a row for the agenda with the given name and returns the ID for it.
+		Creates a row for the agenda with the given title and returns the ID for it.
 	*/
-	public static function createAgenda( $name )
+	public static function createAgenda( $title )
 	{
-		$name = self::sanitizeData( $name );
+		$name = self::sanitizeData( $title );
 		$conn = self::connect();
-		$stmt = $conn->prepare( "INSERT INTO Agendas( name, uploadDate, archived ) values( :name, NOW(), 0 )" );
-		$stmt->bindParam( "name" , $name ); 
+		$stmt = $conn->prepare( "INSERT INTO Agendas( name, uploadDate, archived ) values( :title, NOW(), 0 )" );
+		$stmt->bindParam( "title" , $name ); 
 		$stmt->execute();
 		return $conn->lastInsertId();		
 	}
@@ -254,6 +254,19 @@ class Database
 	}
 
 	/*
+		Removes the agenda with the id provided.
+		Returns errorCode, will be 00000 if nothing went wrong.
+	*/
+	public static function removeAgendaWithID( $id )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "DELETE FROM Agendas WHERE id=:id" );
+		$stmt->bindParam( "id" , $id ); 
+		$stmt->execute();
+		return $stmt->errorCode();
+	}
+
+	/*
 		Creates a blog post with the title and content provided.
 		Returns the id of the blog post that was created.
 	*/
@@ -320,6 +333,17 @@ class Database
 	}
 
 	/*
+		Returns the columns for the most recent blog post
+	*/
+	public static function getMostRecentPost()
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Posts ORDER BY datePosted DESC limit 1" );
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
+	/*
 		Returns the last $limit posts from the blog before the id provided.
 		So given an id of 5 and a limit of 2, will return posts that have id of 3 and 4.
 		The posts returned are ordered by newer posts coming before older posts.
@@ -349,13 +373,30 @@ class Database
 	}
 
 	/*
+		Returns the columns for the senator with the id provided.
+	*/
+	public static function getRosterFromID( $id )
+	{
+		$conn = self::connect();
+		$stmt = $conn->prepare( "SELECT * FROM Roster WHERE id=:id" );
+		$stmt->bindParam( "id" , $id );
+		$stmt->execute();
+		$results = $stmt->fetch();
+		if ( isset( $results[ "id" ] ) )
+		{
+			$results[ "hours" ] = self::getOfficeHours( $results[ "id" ] );
+		}
+		return $results;
+	}
+
+	/*
 		Returns an array that holds the information for all the senators.
 		Inside each row is also another array in the hours column that holds the office hours for that senator.
 	*/
 	public static function getEntireRoster()
 	{
 		$conn = self::connect();
-		$stmt = $conn->prepare( "SELECT id,name,origin,major,letter FROM Roster" );
+		$stmt = $conn->prepare( "SELECT * FROM Roster" );
 		$stmt->execute();
 		$results = $stmt->fetchAll();
 		foreach ( $results as $key=>$row )
@@ -448,6 +489,31 @@ class Database
 		$stmt = $conn->prepare( "DELETE FROM Roster" );
 		$stmt->execute();
 		return $stmt->errorCode();
+	}
+
+	/*
+		Returns the download link for the agenda with the id provided
+	*/
+	public static function downloadLink( $id )
+	{
+		$id = urlencode( self::sanitizeData( $id ) );
+		return "blog/download.php?id={$id}";
+	}
+
+	/*
+		Places a download column, with link for downloading that agenda, in each of the agenda rows for the array provided
+		Returns the new array
+	*/
+	public static function withDownloadLinks( $rows )
+	{
+		foreach( $rows as $key=>$row )
+		{
+			if ( isset( $row[ "id" ] ) )
+			{
+				$rows[ $key ][ "download" ] = self::downloadLink( $row[ "id" ] );
+			}
+		}
+		return $rows;
 	}
 }
 

@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS Agendas;
 CREATE TABLE Agendas
 (
 	id		int NOT NULL auto_increment primary key,
-	name		varchar( 200 ) NOT NULL,
+	name		varchar( 400 ) NOT NULL,
 	uploadDate	datetime NOT NULL,
 	archived	tinyint(1) NOT NULL
 );

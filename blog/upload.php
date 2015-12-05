@@ -9,12 +9,8 @@
 	The filename for the file on the server will be Agenda_ID.pdf 
 		where ID is replaced by the id returned from createAgenda.
 	Finally the permissions on the file are changed to not allow execution.
-	
-	Note: For security reasons, the uploads folder should be outside the document root on the server.
 
 	TODO: Need to secure this by making sure correct CSRF token was sent
-	TODO: Get title to put into database from query parameter
-	TODO: Need to change the path to the uploads folder when we have webspace
 */
 require_once "./database.php";
 require_once "./session.php";
@@ -29,6 +25,11 @@ if ( !Session::userLoggedIn() )
 if ( !isset($_FILES['file']['error']) )
 {
 	die( "File not provided" );
+}
+
+if ( !isset( $_POST['title'] ) )
+{
+	die ( "Title not provided" );
 }
 
 //if the file was not uploaded correctly then do not allow the upload to continue into database
@@ -54,18 +55,37 @@ if ( $mime !== "application/pdf" )
 	die( "{$mime} is not PDF" );
 }
 
-//for debug purposes, was used to print out path to file
-//echo $_FILES['file']['tmp_name'];
+$title = $_POST['title'];
+$result = true;
+//if the uploads folder does not exist, create it
+if ( !file_exists( "./uploads" ) )
+{
+	$result = mkdir( "./uploads" );
+}
 
-//Create a new agenda with title of Test
-$id = Database::createAgenda( "Test" );
+//if the upload has been created in the past at some point
+if ( $result === true )
+{
+	Database::archiveAllAgendas();
+	//Create a new agenda with title of Test
+	$id = Database::createAgenda( $title );
+	$dir = "./uploads/Agenda_{$id}.pdf";
+	if ( file_exists( $dir ) )
+	{
+		Database::removeAgendaWithID( $id );
+		die( "Cannot upload, file already exists" );
+	}
+	
 
-//put path to uploads folder in variable, path should be outside document root for server
-$dir = "../../uploads/Agenda_{$id}.pdf";
+	//move the uploaded file to the uploads folder under the name of its id
+	move_uploaded_file( $_FILES['file']['tmp_name'] , $dir  );
 
-//move the uploaded file to the uploads folder under the name of its id
-move_uploaded_file( $_FILES['file']['tmp_name'] , $dir  );
+	//change the permissions on the uploaded file in the uploads folder to RW-R--R--
+	chmod( $dir, 0644 );	
 
-//change the permissions on the uploaded file in the uploads folder to RW-R--R--
-chmod( $dir, 0644 );
 
+}
+else
+{
+	die( "Failed to create uploads folder" );
+}
