@@ -5,11 +5,13 @@
 	  padding-top: 673px;
 	  background-color: white;
 	}
+
 	nav {
 		background-color: #233e76;
 		height: 40px;
 		font-size: 0.6em;
 	}
+
 	a {
 	  color: #888;
 	  text-decoration: underline;
@@ -43,12 +45,14 @@
 	  margin-bottom: -80px;
 	  box-shadow: 0 2px 3px rgba(0,0,0,.4);
 	}
+
 	.main-nav ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		padding-top: 10px;
 	}
+
 	.main-nav ul li {
 		padding: 0px;
 		padding-left: 10px;
@@ -60,28 +64,33 @@
 		border: 0px solid white;
 		overflow: hidden;
 	}
+
 	.main-nav ul li:HOVER {
 		background-color: #bd1f35;
 		-webkit-border-radius: 7px;
 		-moz-border-radius: 7px;
 		border-radius: 7px;
 	}
+
 	.main-nav ul li a {
 		color: #FFF;
 		position: relative;
 		top: -1px;
-	  text-decoration: none;
-	  font-size: 16pt;
-	  font-family: myriad pro;
+		text-decoration: none;
+		font-size: 16pt;
+		font-family: myriad pro;
 	}
+
 	.text-regular {
 		font-family: 'bebas_neuebold';
 	}
+
 	.icon {
 		position: relative;
 		top: 8px;
 		width: 40px;
 	}
+
 	#calender {
 		text-align: center; 
 	  
@@ -93,7 +102,7 @@
 		margin:0
 		height: 0;
 		overflow:hidden;
-		padding-bottom: 50%;
+		padding-bottom: 40%;
 	}
 
 	#livestream iframe
