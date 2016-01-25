@@ -69,7 +69,7 @@ if ( $result === true )
 	Database::archiveAllAgendas();
 	//Create a new agenda with title of Test
 	$id = Database::createAgenda( $title );
-	$dir = "./uploads/Agenda_{$id}.pdf";
+	$dir = "./uploads/Agenda{$id}.pdf";
 	if ( file_exists( $dir ) )
 	{
 		Database::removeAgendaWithID( $id );

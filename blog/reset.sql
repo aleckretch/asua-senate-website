@@ -65,3 +65,5 @@ Create TABLE OfficeHours
 	REFERENCES Roster(id)
 	ON DELETE CASCADE
 );
+
+INSERT INTO Users( username, password ) VALUES( 'djenkins1' , '' );
