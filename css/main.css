@@ -14,15 +14,7 @@
 	  color: #888;
 	  text-decoration: underline;
 	}
-	/*
-	h1 {
-		height: 60px;
-		width: 100%;
-		margin-left: -30px;
-		padding-left: 30px;
-		background-image: url("../images/our-impact-background.png");
-	}
-	*/
+
 	h1, h2, h3 {
 		color: #bd1f35;
 		font-family: 'bebas_neueregular';
@@ -274,23 +266,100 @@
 	#mugshots{
 		width: 100%;
 	}
+	
+	#mugshots tr td {
+		text-align:center; 
+		vertical-align: middle;
+		height: 90%;
+	}
+	
 	#mugshots tr td img{
+		margin: -3px 0 0 0;
 		width: 100%;
+		height: 90%;
+	}
+	#mugshots tr td img:HOVER{
+		width: 98%;
+		border: solid 3px grey;
 	}
 	
-	#popup{
-		background: white;
+	.popup {
 		width: 50%;
-		height: 50%;
-		color: blue;
-		padding: 20px;
+		height: auto;
+		overflow: visible;
 	}
 	
-	#popup img{
+	.content {
+		background: white;
+		width: 100%;
+		height: 100%;
+		color: purple;
+		padding: 20px;
+		overflow: auto;
+	}
+	
+	.popup_mugshot {
 		height: 150px;
 		width: 150px;
+		float: left;
 	}
 	
+	.popup_close {
+		height: 50px;
+		width: 50px;
+		position: absolute;
+		top: -25px;
+		left: 100%;
+	}
+	
+	.popup_info {
+		text-align: center;
+		height: 150px;
+	}
+	
+
+	/* Format Blog Section */
+	
+
+	form {
+		margin: auto;
+		width: 200px;
+		position: relative;
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: bold;
+		border: 1px solid #000;
+		padding-top: 10px;
+		padding-left: 10px;
+	}
+
+	form h2{
+		padding-bottom: 20px;
+		font-size: 22px;
+	}
+
+	input {
+		display: block;
+		height: 25px;
+		width: 170px;
+	}
+
+	input:focus{
+		border: 1px solid #000;
+	}
+
+	#login-button input{
+		height: 25px;
+		width: 75px;
+		font-size: 15px;
+		position: absolute;
+		bottom: 10px;
+		left: 55px;
+	}
+	
+
+
+
 	
 
 

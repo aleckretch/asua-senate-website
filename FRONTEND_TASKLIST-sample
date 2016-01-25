@@ -20,12 +20,13 @@ Phase 2:
 Phase 3:
 [X] - Fix red area at top to be the same height as the navbar's red header. (Dilan)
 [X] - Add some padding for the white logos in the scrollbar header (15px) (Chris)
-[ ] - Make a scalable temp calendar (Carl)
+[X] - Make a scalable temp calendar (Carl)
 [X] - Fix the over-scrolling issue on nav-click. (Dilan)
-[ ] - API research and tie-in (Dilan)
+[0] - API research and tie-in (Dilan) (On Hold)
 [X] - Fix the width of the triangular pattern to be exactly the window width. (see updated issue in Phase 4)
 [X] - Social media sizing icons. Also, add links to them (new window). (Other Aaron)
 [X] - Responsive CSS (we're good already down to about 6-700ish pixels width, need at least 2 more media queries--one for collapse, one for mobile.)
+
 
 PHASE 3 NOTES AND INFO: 
 facebook: https://www.facebook.com/ASUATODAY?fref=ts
@@ -34,19 +35,22 @@ google calendar (embed code): <iframe src="https://www.google.com/calendar/embed
 
 Phase 4: 
 [ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely (no gradient) - (Alec)
-[ ] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool
-[ ] - Calendar implementation.
-[ ] - Test cross-browser & platform implementation
-Phase 5:
-[ ] - Blog aesthetic implementation (junk content)
-[ ] - Login page for blog. 
-[ ] - 
-Phase 6: 
+[ ] - Calendar implementation. (Carl)
+[ ] - Test cross-browser & platform implementation (Carl)
+[X] - Backend PHP blog skeleton (just get it printing out the input fields for now) (Dilan)
+[ ] - Blog aesthetic implementation (junk content) (Aaron)
+[ ] - Login page for blog.  (Other Aaron)
+[ ] - Senator roster (pics & info)
+[ ] - Fix margin width for main body. (Aaron)
+[ ] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool (Chris)
+
+
+Phase 5: 
 [ ] - Live Stream? Is this an actual feature? If so, research & implementation.
 [ ] - Agenda implementation (another overlay or separate page? Archiving procedures...)
-Phase 7:
+Phase 6:
 [ ] - Bug search & destroy.
-Phase 8:
+Phase 7:
 [ ] - Refactor CSS/HTML & any other ugly working code.
 [ ] - Content population
 [ ] - Test all links and content. 
