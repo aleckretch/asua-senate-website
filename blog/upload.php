@@ -18,30 +18,39 @@ require_once "./session.php";
 //if the user is not logged in, do not allow the upload to continue into database
 if ( !Session::userLoggedIn() )
 {
-	die ( "Must be logged in to upload an agenda file." );
+	header( "Location: login.php" );
+	exit();
 }
 
 //if error code is not set on file upload array then do not allow upload to continue into database
 if ( !isset($_FILES['file']['error']) )
 {
-	die( "File not provided" );
+	$message = urlencode( "File not provided" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
 
 if ( !isset( $_POST['title'] ) )
 {
-	die ( "Title not provided" );
+	$message = urlencode( "Title not provided" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
 
 //if the file was not uploaded correctly then do not allow the upload to continue into database
 if ( $_FILES['file']['error'] !== UPLOAD_ERR_OK )  
 {
-	die( "Upload failed with error {$_FILES['file']['error']}" );
+	$message = urlencode( "Upload failed with error {$_FILES['file']['error']}" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
 
 //if the file uploaded is larger then 20mb don't allow the upload to continue into database
 if ( $_FILES['file']['size'] > 20000000) 
 {
-	die ( "Could not upload file, file too large" );
+	$message = urlencode( "Could not upload file, file too large" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
 
 //open resource to get actual mime type from the file
@@ -52,7 +61,9 @@ $mime = finfo_file( $finfo, $_FILES['file']['tmp_name'] );
 //if the mime type is not a PDF file, then ignore the file
 if ( $mime !== "application/pdf" )
 {
-	die( "{$mime} is not PDF" );
+	$message = urlencode( "{$mime} is not PDF" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
 
 $title = $_POST['title'];
@@ -73,7 +84,10 @@ if ( $result === true )
 	if ( file_exists( $dir ) )
 	{
 		Database::removeAgendaWithID( $id );
-		die( "Cannot upload, file already exists" );
+		$message = urlencode( "Cannot upload, file already exists" );
+		header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+		exit();
+
 	}
 	
 
@@ -82,10 +96,12 @@ if ( $result === true )
 
 	//change the permissions on the uploaded file in the uploads folder to RW-R--R--
 	chmod( $dir, 0644 );	
-
-
+	header( "Location: admin.php?agenda=true&uploaded=yes" );
+	exit();
 }
 else
 {
-	die( "Failed to create uploads folder" );
+	$message = urlencode( "Failed to create uploads folder" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
 }
