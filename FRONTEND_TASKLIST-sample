@@ -34,20 +34,37 @@ twitter: https://twitter.com/asuatoday
 google calendar (embed code): <iframe src="https://www.google.com/calendar/embed?src=email.arizona.edu_ba85oje4iaib34bjl8hq3urli4%40group.calendar.google.com&ctz=America/Phoenix" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 Phase 4: 
-[ ] - (NEW) Need to fix the triangle background image so when it repeats it flows nicely (no gradient) - (Alec)
-[ ] - Calendar implementation. (Carl)
-[ ] - Test cross-browser & platform implementation (Carl)
+[X] - Test cross-browser & platform implementation (Carl)
+[X] - Calendar implementation. (Carl)
 [X] - Backend PHP blog skeleton (just get it printing out the input fields for now) (Dilan)
-[ ] - Blog aesthetic implementation (junk content) (Aaron)
-[ ] - Login page for blog.  (Other Aaron)
-[ ] - Senator roster (pics & info)
-[ ] - Fix margin width for main body. (Aaron)
-[ ] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool (Chris)
+[X] - Login page for blog.  (Other Aaron)
+[X] - Change login password field to actual password field (only asterisks show) (Other Aaron)
+[X] - Add dropdown box to login form (options: roster, blog, agenda) (Other Aaron)
+[ ] - Make temp database. (Aaron)
+[X] - Change font color on overlays to blue and change the font-family to something a little more like the rest of the page (Chris) 
+[ ] - Blog aesthetic implementation (junk content) (Header, date, name and blog entry) (Other Aaron)
+[X] - Roster fields for database - Name, major, from(city), office hours(days of week, from-to), Letter
+[/] - Senator roster (pics & info) 
+[ ] - Create template pages for roster upload with dynamic office hour fields (days & times) (Carl)
+[ ] - Create template pages for Agenda and Blog upload (Carl)
+[X] - Fix margin width for main body. (Aaron)
+[X] - Finish overlay implementation with complete aesthetic. NOTE: we will probably want senate roster to be updatable with blog tool (Chris)
+[X] - Crop pics and save for thumbnails and also upload full portrait and put on overlay (Chris)
+[X] - Make JSON handler for backend. (Dilan)
+[ ] - Safari layout bug. (Aaron)
+[ ] - Calendar schema (Carl)
+  
+
+Blog Implementation brainstorm: 
+	If we decide to use BBCode, handling it on the server:
+		http://php.net/manual/en/book.bbcode.php
+	We could also take the strain off the server and make the client parse it
 
 
 Phase 5: 
 [ ] - Live Stream? Is this an actual feature? If so, research & implementation.
 [ ] - Agenda implementation (another overlay or separate page? Archiving procedures...)
+[ ] - Calendar take-2
 Phase 6:
 [ ] - Bug search & destroy.
 Phase 7:

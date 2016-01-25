@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASUA Senate Blog</title>
+    <link rel="stylesheet" href="../css/fonts/specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../css/fonts/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/jquery.popupoverlay.js"></script>
+	<script>
+		//Dynamic content demo
+		$(function() {
+			//First, we want to detect when the option changes, and then have a function fire when it does.
+			$('#loginDropBox').change(function() {
+				//Now that we have a change, let's get the value, and decide what to do. I'll make some slightly
+				//different HTML for each case just to make it explicitly clear.
+				var option = $('#loginDropBox').val();
+				console.log(option);	//this is just for debugging if we need it.
+				
+				//We're going to just have one element display at a time. So, right off the bat, let's clear out any old ones.
+				$('.newThing').remove();
+				
+				//I used a switch statement to avoid a bunch of if/else mess.
+				switch(option) {
+					case 'select': 
+						//Ok, so Jquery lets us just make some HTML right in the parens like this, and simultaneously append it to an HTML element.
+						$('<div class="newThing" style="color: red;">SELECTED SELECT!!</div>').appendTo('#blogHead');
+						break;
+					case 'roster':
+						//You can also assign it to a var to make it a little more wieldy if need be.
+						var theThing = $('<input type="text" value="YARG" class="newThing">');
+						//Then, instead of appending TO, you can just append by select the element you want first, and then sticking in the HTML.
+						//It mostly does the same thing. Just different syntax.
+						$('#blogHead').append(theThing);
+						break;
+					case 'blog':
+						//More of the same.
+						$('<button class="newThing">WHOA NELLY!</button>').appendTo('#blogHead');
+						break;
+					case 'agenda':
+						//blah blah...
+						$('<h1 class="newThing">DUDE!<h1>').appendTo('#blogHead');
+						break;
+					default:
+						console.log(option);	//always good to have a default case. Saves headaches for those weird issues.
+						break;				
+				}
+			
+			});
+		
+		});
+	</script>
+</head>
+<body>
+    <!-- Start Blog Login Page -->
+    
+ 
+    <article id="blogHead" class="blog-section main-article" style="position: absolute; top: 0; left: 0;">
+ <!--   
+        <h1>Blog</h1>
+        <form action="login.php" method="post">
+            <h2>User Login</h2>
+            <fieldset>
+                Username<br>
+                <input type="text" name="username">
+                <br>
+                Password<br>
+                <input type="text" name="password">
+                <br><br>
+                <div id="login-button">
+                    <input type="submit" value="Login">
+                </div>
+            </fieldset>
+        </form>
+ -->
+        
+        <form action="login.php" method="post">
+					<h2>User Login</h2>
+					<fieldset>
+						<select name="dropbox" id="loginDropBox">
+							<option value="select">Select</option>
+							<option value="roster">Roster</option>
+							<option value="blog">Blog</option>
+							<option value="agenda">Agenda</option>
+						</select>
+						Username<br>
+						<input type="text" name="username">
+						<br>
+						Password<br>
+						<input type="password" name="password">
+						<br><br>
+						<div id="login-button">
+							<input type="submit" value="Login">
+						</div>
+					</fieldset>
+				</form>
+        
+        
+        
+    </article>
+</body>
+</html>

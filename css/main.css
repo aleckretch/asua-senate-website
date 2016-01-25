@@ -5,11 +5,13 @@
 	  padding-top: 673px;
 	  background-color: white;
 	}
+
 	nav {
 		background-color: #233e76;
 		height: 40px;
 		font-size: 0.6em;
 	}
+
 	a {
 	  color: #888;
 	  text-decoration: underline;
@@ -43,12 +45,14 @@
 	  margin-bottom: -80px;
 	  box-shadow: 0 2px 3px rgba(0,0,0,.4);
 	}
+
 	.main-nav ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		padding-top: 10px;
 	}
+
 	.main-nav ul li {
 		padding: 0px;
 		padding-left: 10px;
@@ -60,36 +64,57 @@
 		border: 0px solid white;
 		overflow: hidden;
 	}
+
 	.main-nav ul li:HOVER {
 		background-color: #bd1f35;
 		-webkit-border-radius: 7px;
 		-moz-border-radius: 7px;
 		border-radius: 7px;
 	}
+
 	.main-nav ul li a {
 		color: #FFF;
 		position: relative;
 		top: -1px;
-	  text-decoration: none;
-	  font-size: 16pt;
-	  font-family: myriad pro;
+		text-decoration: none;
+		font-size: 16pt;
+		font-family: myriad pro;
 	}
+
 	.text-regular {
 		font-family: 'bebas_neuebold';
 	}
+
 	.icon {
 		position: relative;
 		top: 8px;
 		width: 40px;
 	}
+
 	#calender {
 		text-align: center; 
 	  
 	}
-	#livestream {
-		text-align: center; 
-	  
+
+	#livestream 
+	{
+		position: relative;
+		margin:0
+		height: 0;
+		overflow:hidden;
+		padding-bottom: 40%;
 	}
+
+	#livestream iframe
+	{
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0 none transparent;
+	}
+
 	#slide-wrapper {
 		margin: 0;
 		padding: 0;
@@ -254,7 +279,6 @@
 		padding-bottom: 5px;
 	}
 
-
 	.icon-square i{
 		
 		font-size: 2em;
@@ -263,29 +287,54 @@
 
 	}
 	
-	#mugshots{
+	/*	Popup Format */
+	
+	h6 {
+		font-family: 'bebas_neueregular';
+		font-size: 24px;
+	}
+	
+	.nameOverlay {
+		width: 20%;
+		background: black;
+		position: relative;
+		top: -28px;
+		text-align: center;
+		font-size: 25px;
+		opacity: 0.8;
+		color: white;
+		display: inline;
+	}
+	
+	.mugshots{
 		width: 100%;
+		margin: 0 0 0 0;
+		padding: 0;
 	}
 	
-	#mugshots tr td {
-		text-align:center; 
-		vertical-align: middle;
-		height: 90%;
-	}
-	
-	#mugshots tr td img{
+	.ms2{
 		margin: -3px 0 0 0;
-		width: 100%;
-		height: 90%;
 	}
-	#mugshots tr td img:HOVER{
-		width: 98%;
-		border: solid 3px grey;
+	
+	
+	.mugshots img{
+		margin: 0 0 0 0;
+		padding: 0;
+		width: 20%;	
+		cursor: pointer;
+		border: solid 5px #233e76;
+		box-sizing: border-box;
+	}
+	.mugshots img:HOVER{
+		width: 20%;
+		opacity: 0.8;
+		cursor: pointer;
 	}
 	
 	.popup {
-		width: 50%;
-		height: auto;
+		font-family: 'verdana';
+		width: 55%;
+		height: 75%;
 		overflow: visible;
 	}
 	
@@ -293,15 +342,14 @@
 		background: white;
 		width: 100%;
 		height: 100%;
-		color: purple;
+		color: #233e76;
 		padding: 20px;
 		overflow: auto;
 	}
 	
 	.popup_mugshot {
-		height: 150px;
-		width: 150px;
-		float: left;
+		height: auto;
+		width: 100%;
 	}
 	
 	.popup_close {
@@ -310,14 +358,34 @@
 		position: absolute;
 		top: -25px;
 		left: 100%;
+		cursor: pointer;
 	}
 	
 	.popup_info {
 		text-align: center;
-		height: 150px;
+		float: left;
+		padding: 0;
+		width: 30%;
 	}
 	
-
+	.popup_text {
+		float: right;
+		width: 69%
+	}
+	
+	/*
+	.popup dl {
+		text-align: left;
+	}
+	
+	.popup dl dd {
+		padding: 0 0 0 20px;
+	}
+	*/
+	
+	
+	
+	
 	/* Format Blog Section */
 	
 
@@ -331,6 +399,7 @@
 		border: 1px solid #000;
 		padding-top: 10px;
 		padding-left: 10px;
+		background-color: #D3D3D3;
 	}
 
 	form h2{
@@ -355,6 +424,12 @@
 		position: absolute;
 		bottom: 10px;
 		left: 55px;
+	}
+
+
+	#loginDropBox{
+		display: block;
+		margin-bottom: 15px;
 	}
 	
 
