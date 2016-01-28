@@ -85,6 +85,37 @@
 					
 					We'll have some blog stuff here soon.
 					
+				<style>
+					.blogPostblock{
+						margin-top:10px;
+						border:2px solid #233E76;
+						min-height:60px;
+					}
+					.blogPost_title{
+						margin:10px;
+						
+						padding:5px;
+						font-family:sans-serif;
+						font-size: 1.5em;
+					
+						text-align: center;
+					}
+					.blogPost_author{
+						text-align: center;
+						margin:10px;
+						padding:5px;
+						color:
+					}
+					.blogPost_time{
+						color:green;
+					}
+					.blog_Post_content{
+						margin:10px;
+						padding:5px;
+					}
+					
+				</style>
+				
 				
 			</article>
 
@@ -355,5 +386,28 @@
 		</div>
 	 </div>
 	 </body>
+		 <script >
+		 	$(document).ready(function(){
+				
+				var BlogOption = {blog:"3"};
+				$.get("blog/ajax.php",BlogOption).done(function(data){
+					//console.log(data);
+					var obj =JSON.parse(data)
+					console.log(data);
+					var BlogHtml = '';
+				
+					for (var i in obj){
+						BlogHtml = '<div class="blogPostblock">' +
+					' <div class="blogPost_title">'+obj[i].title+'</div>' +
+					'<div class="blogPost_author">'+obj[i].author+' <span class="blogPost_time">'+obj[i].datePosted+'</span> </div>'+
+					
+					'<div class="blog_Post_content">'+obj[i].content+'</div>' +
+				'</div>';
+						$('#blogHead').append(BlogHtml);
+					}
+						
+				})
+			})
+		 </script>
 </html>
  
