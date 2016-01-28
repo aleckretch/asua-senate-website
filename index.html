@@ -86,32 +86,46 @@
 					We'll have some blog stuff here soon.
 					
 				<style>
+					#blogHead{
+						background: white;
+					}
 					.blogPostblock{
 						margin-top:10px;
-						border:2px solid #233E76;
-						min-height:60px;
+						//min-height:60px;
+						clear: both;
 					}
 					.blogPost_title{
-						margin:10px;
-						
+						margin:5px;
 						padding:5px;
-						font-family:sans-serif;
-						font-size: 1.5em;
-					
-						text-align: center;
+						font-family:"Trebuchet MS", Helvetica, sans-serif;
+						font-size: 2em;
+						font-weight: bold;
+					color:#233E76;
+						
 					}
 					.blogPost_author{
-						text-align: center;
+				
 						margin:10px;
-						padding:5px;
-						color:
+						padding-left:5px;
+						color:red;
+						font-family: Arial, Helvetica, sans-serif;
+					}
+					.blogPost_author .underline{
+						 text-decoration: underline;
+						
 					}
 					.blogPost_time{
-						color:green;
+						
 					}
 					.blog_Post_content{
+						font-family: Verdana, Geneva, sans-serif;
 						margin:10px;
 						padding:5px;
+					}
+					.readmore{
+						font-family: Verdana, Geneva, sans-serif;
+						float: right;
+						clear: both;
 					}
 					
 				</style>
@@ -399,9 +413,10 @@
 					for (var i in obj){
 						BlogHtml = '<div class="blogPostblock">' +
 					' <div class="blogPost_title">'+obj[i].title+'</div>' +
-					'<div class="blogPost_author">'+obj[i].author+' <span class="blogPost_time">'+obj[i].datePosted+'</span> </div>'+
+					'<div class="blogPost_author">Post by <span class="underline">'+obj[i].author+'</span> <span class="blogPost_time">'+obj[i].datePosted+'</span> </div>'+
 					
 					'<div class="blog_Post_content">'+obj[i].content+'</div>' +
+					'<div class="readmore">Read more</div>'+
 				'</div>';
 						$('#blogHead').append(BlogHtml);
 					}
