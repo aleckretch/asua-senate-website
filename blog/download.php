@@ -2,23 +2,21 @@
 /*
 	This php file acts as an intermediary for anyone to download the agenda files.
 	It also allows us to send back a recommended filename for the pdf to the browser.
+	
 */
 require_once( "./database.php" );
-if ( !isset( $_GET['id'] ) )
-{
-	die( "No file id provided" );
-}
 
 //get the id provided as a get parameter
-$id = $_GET['id'];
-$agenda = Database::getAgendaFromID( $id );
-//if the result from getAgendaFromID is false then the id is invalid
-if ( $agenda === FALSE )
+$agenda = Database::getMostRecentAgenda();
+if ( !isset( $agenda[ 'id' ] ) )
 {
-	die ( "File not found" );
+	die( "Could not download agenda. <br>File not found." );
 }
+$id = $agenda[ 'id' ];
 
-$fileName = "./uploads/Agenda_{$id}.pdf";
+//if the result from getAgendaFromID is false then the id is invalid
+
+$fileName = "./uploads/Agenda{$id}.pdf";
 if ( !file_exists( $fileName ) )
 {
 	die ( "File does not exist" );
@@ -37,7 +35,7 @@ $phpdate = strtotime( $agenda[ 'uploadDate'] );
 $mysqldate = date( 'm_d_Y', $phpdate );
 
 //tell the browser that the filename to download the file as is Agenda_ followed by date the agenda was added to database
-header("Content-Disposition:attachment;filename='Agenda_{$mysqldate}.pdf'");
+header("Content-Disposition:attachment;filename='Agenda{$mysqldate}.pdf'");
 
 //output the files contents to the browser, allowing user to download file
 readfile( $fileName );
