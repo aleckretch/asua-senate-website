@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University of Arizona</title>
+	<script src="tinymce_4.3.3/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script>tinymce.init({ selector:'textarea' });</script>
+	<style>
+	h1{text-align: center;color: #536DFE;}
+	h2{color: #536DFE;}
+	footer{text-align: center;}
+	body {background-color:lightgrey;}
+	input{margin: 5px;}
+	FORM { border : solid gray 2px; padding : 3px;}
+	</style>
+</head>
+<body>
+      <a href="index.html">Return to Page</a><br/>
+      <header><!-- Start header -->
+         <h1 id="logo">ASUA Upload Archive</h1>
+      </header><!-- End header -->
+
+      <div id="Submit"><!-- Start content -->
+        <form action="index.php"
+		enctype="multipart/form-data" method="post">
+		<p>
+		Type some text (Optional):<br>
+		<input type="text" name="textline" size="30">
+		</p>
+		<p>
+		Please specify a file, or a set of files:<br>
+		<input type="file" name="datafile" size="40">
+		</p>
+		<div>
+		<input type="submit" value="Send">
+		</div>
+		</form>
+	   </div>
+	   
+	   <div>
+	   <h2>Blog Post Entry</h2>
+	   <form action="index.php" method="post">
+        <textarea id="mytextarea"></textarea>
+		<div>
+		<input type="submit" value="Send">
+		</div>
+	   </form>
+	   </div>
+	   
+   </div>
+   <footer><!-- Start footer -->
+          <p>2016 &copy;</p>
+   </footer><!-- End footer -->
+</body>
+</html>
