@@ -38,7 +38,7 @@
 					<li><a href="#agendaHead"> agenda</a></li> |
 					<li><a href="#calendarHead"> calendar</a></li> |
 					<li><a href="#livestreamHead"> live stream</a></li> |
-					<li><a id="blogLink" href="#"> blog</a></li>
+					<li><a id="blogLink" href="#blogHead"> blog</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -139,7 +139,7 @@
 				</style>
 				<div id='blogContent'>
 				</div>
-				<button class="readmore" href="index.html">Read more</button>
+				<a class="readmore" href="index.html">Read more</a>
 			</article>
 
 		</div>
@@ -435,7 +435,8 @@
 
 		 	$(document).ready(function(){
 				sendRequest( {blog:"first"} );
-				$( '.readmore' ).click( function() {
+				$( '.readmore' ).click( function( e ) {
+					e.preventDefault();
 					sendRequest( {blog: id + "" } );
 				}
 				);
