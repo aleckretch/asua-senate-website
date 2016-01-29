@@ -37,7 +37,7 @@ else if ( isset( $_GET['blog'] ) )
 	if ( $response === "first" )
 	{
 		
-		echo json_encode( Database::getMostRecentPost() );
+		echo json_encode( array( Database::getMostRecentPost() ) );
 	}
 	else
 	{

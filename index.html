@@ -137,8 +137,9 @@
 					}
 					
 				</style>
-				
-				
+				<div id='blogContent'>
+				</div>
+				<button class="readmore" href="index.html">Read more</button>
 			</article>
 
 		</div>
@@ -409,29 +410,36 @@
 	 </div>
 	 </body>
 		 <script >
-		 	$(document).ready(function(){
-				
-				var BlogOption = {blog:"5"};
+			var id = "first";
+			function sendRequest( BlogOption )
+			{
 				$.get("blog/ajax.php",BlogOption).done(function(data){
 					var obj =JSON.parse(data)
 					console.log(data);
 					var BlogHtml = '';
 				
 					for (var i in obj){
+						id = obj[ i ].id;
 						BlogHtml = '<div class="blogPostblock">' +
 					' <div class="blogPost_title">'+obj[i].title+'</div>' +
 					'<div class="blogPost_author">Post by <span class="underline">'+obj[i].author+'</span> <span class="blogPost_time">'+obj[i].datePosted+'</span> </div>'+	
 					'<div class="blog_Post_content">'+obj[i].content+'</div>' +
 					
 				'</div>';
-						$('#blogHead').append(BlogHtml);
+						$('#blogContent').append(BlogHtml);
 					}
 					
-					if (obj.length>0){
-						$('#blogHead').append('<a class="readmore" href="index.html">Read more</a>');
-					}
 						
 				})
+			}
+
+		 	$(document).ready(function(){
+				sendRequest( {blog:"first"} );
+				$( '.readmore' ).click( function() {
+					sendRequest( {blog: id + "" } );
+				}
+				);
+				
 			})
 		 </script>
 </html>
