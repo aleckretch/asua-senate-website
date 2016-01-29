@@ -67,3 +67,24 @@ Create TABLE OfficeHours
 );
 
 INSERT INTO Users( username, password ) VALUES( 'djenkins1' , '' );
+
+INSERT INTO Users( username, password ) VALUES( 'akretch' , '' );
+INSERT INTO Users( username, password ) VALUES( 'nataliescibilia' , '' );
+INSERT INTO Users( username, password ) VALUES( 'treycoxiii' , '' );
+INSERT INTO Users( username, password ) VALUES( 'haileyschwartz' , '' );
+INSERT INTO Users( username, password ) VALUES( 'alexaj' , '' );
+INSERT INTO Users( username, password ) VALUES( 'andreaszai' , '' );
+INSERT INTO Users( username, password ) VALUES( 'davidtmcgarey' , '' );
+INSERT INTO Users( username, password ) VALUES( 'madelinebynes' , '' );
+INSERT INTO Users( username, password ) VALUES( 'ehastings' , '' );
+INSERT INTO Users( username, password ) VALUES( 'mlubisic' , '' );
+INSERT INTO Users( username, password ) VALUES( 'zanoni' , '' );
+INSERT INTO Users( username, password ) VALUES( 'richardzprunty' , '' );
+
+
+
+
+
+
+
+

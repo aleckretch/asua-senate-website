@@ -3,7 +3,6 @@ require_once "./database.php";
 require_once "./session.php";
 /*
 	This page holds the different HTML forms for the backend.
-	TODO: Need to show the corresponding form once they have been created
 */
 
 function showMessage( $str , $correctStr, $messageCorrect, $messageWrong )
@@ -49,7 +48,7 @@ if ( !Session::userLoggedIn() )
 <html>
 <head>
     <title>University of Arizona</title>
-	<script src="tinymce_4.3.3/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script src="../js/tiny_mce.js"></script>
 	<style>
 	h1{text-align: center;color: #536DFE;}
 	h2{color: #536DFE;}
@@ -93,7 +92,12 @@ if ( isset( $req[ 'blog' ] ) )
 		</div>
 	   </form>
 	   </div>
-	<script>tinymce.init({ selector:'textarea' });</script>
+	<script>
+		tinyMCE.init({
+			selector:'textarea' , 
+	    		plugins : 'bbcode'
+		});
+	</script>
 	";
 	checkUploaded( $uploaded, $str , $correct , "yes" , "Blog post created" , $correct, false );
 	?>
