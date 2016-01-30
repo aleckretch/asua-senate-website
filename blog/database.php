@@ -266,6 +266,25 @@ class Database
 		return $stmt->errorCode();
 	}
 
+	public static function convertDateOfBlog( $blogPost )
+	{
+		if ( !isset( $blogPost[ 'datePosted'] ) )
+		{
+			return $blogPost;
+		}
+		$blogPost[ 'datePosted' ] = date( 'F d, Y', strtotime( $blogPost[ 'datePosted'] ) );
+		return $blogPost;
+	}
+
+	public static function convertDateOfBlogPosts( $posts )
+	{
+		foreach( $posts as $key=>$value )
+		{
+			$posts[ $key ] = Database::convertDateOfBlog( $posts[ $key ] );
+		}
+		return $posts;
+	}
+
 	/*
 		Creates a blog post with the title and content provided.
 		Returns the id of the blog post that was created.

@@ -48,7 +48,10 @@ if ( !Session::userLoggedIn() )
 <html>
 <head>
     <title>University of Arizona</title>
-	<script src="../js/tiny_mce.js"></script>
+	<script src="../js/jquery-2.1.4.min.js"></script>
+	<script src="../js/jquery.wysibb.js"></script>
+	<link rel="stylesheet" href="../css/default/wbbtheme.css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style>
 	h1{text-align: center;color: #536DFE;}
 	h2{color: #536DFE;}
@@ -81,10 +84,10 @@ if ( isset( $req[ 'blog' ] ) )
 	   <h2>Blog Post Entry</h2>
 	   <form action='index.php' method='post'>
 			<input type='hidden' name='token' value='${token}'>
-			Title:<br>
-			<input type='text' name='title' size='30' required><br>
 			Author:<br>
 			<input type='text' name='author' size='30' required><br>
+			Title:<br>
+			<input type='text' name='title' size='30' required><br>
 			Post:<br>
         <textarea id='text' name='text'></textarea>
 		<div>
@@ -93,10 +96,7 @@ if ( isset( $req[ 'blog' ] ) )
 	   </form>
 	   </div>
 	<script>
-		tinyMCE.init({
-			selector:'textarea' , 
-	    		plugins : 'bbcode'
-		});
+		$('#text').wysibb();
 	</script>
 	";
 	checkUploaded( $uploaded, $str , $correct , "yes" , "Blog post created" , $correct, false );
