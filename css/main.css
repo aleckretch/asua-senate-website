@@ -432,6 +432,60 @@
 		display: block;
 		margin-bottom: 15px;
 	}
+
+	#blogHead{
+		background: white;
+		margin: 0 auto;
+	}
+	.blogPostblock{
+		margin-top:10px;
+		//min-height:60px;
+		clear: both;
+	}
+	.blogPost_title{
+		margin:5px;
+		padding:5px;
+		font-family:"Trebuchet MS", Helvetica, sans-serif;
+		font-size: 3em;
+		font-weight: bold;
+		color:#233E76;
+		letter-spacing: -1px;
+	
+	}
+	.blogPost_author{
+
+		margin:10px;
+		padding-left:5px;
+		color:red;
+		font-family: 'Roboto', sans-serif;
+		letter-spacing: 1px;
+	}
+		font-family: 'Roboto', sans-serif;
+		float: right;
+		clear: both;
+	
+	}		.blogPost_author .underline{
+		 text-decoration: underline;
+	
+	}
+	.blogPost_time{
+	
+	}
+	.blog_Post_content{
+		font-family: 'Roboto', sans-serif;
+		margin:10px;
+		padding:5px;
+		font-size: 1.2em;
+		line-height: 25px;
+		letter-spacing: 1px;
+	}
+	.readmore{
+		font-family: 'Roboto', sans-serif;
+		float: right;
+		clear: both;
+	
+	}
+					
 	
 
 
