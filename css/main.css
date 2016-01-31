@@ -131,9 +131,6 @@
 	#senate-logo-div {
 		position: absolute;
 		width: 100%;
-/* 
-		left: 50%;	
- */
 	}
 	#senate-logo {
 		position: relative;
@@ -184,11 +181,9 @@
 	.main {
 		position:relative;
 		z-index: 149;
-	  background: black;
-	  padding: 50px 0px 50px;
-	  
-/* 	  column-gap: 40px; */
-	  font-family: Verdana;
+	  	background: black;
+	  	padding: 50px 0px 50px;
+	  	font-family: Verdana;
 		background-image: url("../images/our-impact-background.png");
 		background-repeat: repeat;
 	}
@@ -198,7 +193,6 @@
 		font-family: Myriad pro;
 	}
 
-	/* format footer section */
 	footer {
 		width: 100%;
 		margin: 0;
@@ -288,8 +282,6 @@
 
 	}
 	
-	/*	Popup Format */
-	
 	h6 {
 		font-family: 'bebas_neueregular';
 		font-size: 24px;
@@ -373,22 +365,6 @@
 		float: right;
 		width: 69%
 	}
-	
-	/*
-	.popup dl {
-		text-align: left;
-	}
-	
-	.popup dl dd {
-		padding: 0 0 0 20px;
-	}
-	*/
-	
-	
-	
-	
-	/* Format Blog Section */
-	
 
 	form {
 		margin: auto;
@@ -437,9 +413,9 @@
 		background: white;
 		margin: 0 auto;
 	}
+
 	.blogPostblock{
 		margin-top:10px;
-		//min-height:60px;
 		clear: both;
 	}
 	.blogPost_title{
@@ -459,15 +435,13 @@
 		color:red;
 		font-family: 'Roboto', sans-serif;
 		letter-spacing: 1px;
-	}
-		font-family: 'Roboto', sans-serif;
-		float: right;
-		clear: both;
-	
-	}		.blogPost_author .underline{
+	}	
+
+	.underline{
 		 text-decoration: underline;
 	
 	}
+
 	.blogPost_time{
 	
 	}
