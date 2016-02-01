@@ -61,7 +61,8 @@ $(function() {
 
 
 		//This adds smooth scrolling for each of the nav links, excluding the blog link
-		$( 'nav a:not(#blogLink)' ).click( function() {
+		$( 'nav a' ).click( function(e) {
+			e.preventDefault();
 			var headID = $( this ).attr( "href" );
 			var newPosition = $( headID ).offset().top - ((slideHeight+27) * 2.5);
 			console.log( newPosition );

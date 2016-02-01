@@ -7,12 +7,15 @@
 		<link rel="stylesheet" href="css/fonts/specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" />
 		<link rel="stylesheet" href="css/fonts/stylesheet.css" type="text/css" charset="utf-8" />
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/xbbcode.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 		<script src="js/jquery-2.1.4.min.js"></script>
 		<script src="js/jquery.popupoverlay.js"></script>
 		<script src="js/navbar.js"></script>
 		<script src="js/popup-overlay.js"></script>
-
+		<script src="js/xbbcode.js"></script>
+		<script src="js/blog.js"></script>
 	</head>
 	
 	<body>
@@ -37,7 +40,7 @@
 					<li><a href="#agendaHead"> agenda</a></li> |
 					<li><a href="#calendarHead"> calendar</a></li> |
 					<li><a href="#livestreamHead"> live stream</a></li> |
-					<li><a id="blogLink" href="#"> blog</a></li>
+					<li><a id="blogLink" href="#blogHead"> blog</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -56,10 +59,13 @@
 			
 			<article id="agendaHead" class="agenda-section main-article">
 			<h1><img class="icon" src="images/agenda-icon.png">Agenda</h1>
-			  <p>Praesent eu <A href="#">enim non</a> massa pellentesque lobortis. In in sagittis dolor. Aliquam non massa erat. Ut aliquet gravida tellus, sed volutpat nibh condimentum et. Nunc quam purus, vehicula quis venenatis et, porttitor vel dolor. Cras facilisis dui id elit bibendum, in ullamcorper leo ultricies. Praesent rutrum lacus sit amet sem convallis, ut interdum dolor vestibulum.</p>
-			  <p>Tum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In iaculis pharetra odio, sit amet consectetur elit facilisis ac. Praesent eget tristique ipsum. Donec malesuada bibendum lacinia. Praesent non purus sodales, pulvinar mi vitae, tincidunt leo. Phasellus vitae elit ut nisl semper fringilla id rutrum dolor. Donec a massa adipiscing, cursus risus vitae, porttitor tortor. Nullam sagittis est sapien, sit amet pharetra turpis imperdiet vel. Etiam sit amet ligula pretium, vulputate eros ac, bibendum velit. Aenean convallis ante purus, ac bibendum orci laoreet ac. Donec a convallis mauris. Nulla non lacus non ipsum pretium tempor. In hac habitasse platea dictumst. Aenean at ipsum vulputate, sagittis dui ut, pharetra neque. Nam eget sodales orci. Aliquam pharetra nunc at nisl pellentesque, nec fringilla enim iaculis.</p>
-			  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla, purus in porttitor pellentesque, erat arcu tincidunt diam, dapibus faucibus leo mauris at sapien. In porttitor vehicula sodales. Vivamus massa neque, facilisis eu felis ut, aliquet convallis nisi. Nam elementum tellus vitae gravida fermentum. Nullam et imperdiet leo. Integer ut euismod lorem, in placerat lacus. Curabitur bibendum arcu ut feugiat commodo. Suspendisse ut mi vel orci ullamcorper tincidunt. Nam vitae fringilla nibh. Nullam hendrerit blandit velit eu hendrerit.</p>
-			</article>	
+			  <p>
+			  </p>
+			<div>
+				<a href="blog/download.php">Access Agenda Archive</a><br/>
+				<a href="blog/uploads">Upload a File </a><br/>
+			</div>
+			</article>
 			<article id="calendarHead" class="calendar-section main-article">
 			<h1><img class="icon" src="images/calendar-icon.png">Calendar</h1>
 			 <p id="calender"> 
@@ -82,55 +88,11 @@
 			<article id="blogHead" class="blog-section main-article">
 				<!-- No Blog image for H1 tag given -->
 				<h1>Blog</h1>
-					
-					We'll have some blog stuff here soon.
-					
-				<style>
-					#blogHead{
-						background: white;
-					}
-					.blogPostblock{
-						margin-top:10px;
-						//min-height:60px;
-						clear: both;
-					}
-					.blogPost_title{
-						margin:5px;
-						padding:5px;
-						font-family:"Trebuchet MS", Helvetica, sans-serif;
-						font-size: 2em;
-						font-weight: bold;
-					color:#233E76;
-						
-					}
-					.blogPost_author{
-				
-						margin:10px;
-						padding-left:5px;
-						color:red;
-						font-family: Arial, Helvetica, sans-serif;
-					}
-					.blogPost_author .underline{
-						 text-decoration: underline;
-						
-					}
-					.blogPost_time{
-						
-					}
-					.blog_Post_content{
-						font-family: Verdana, Geneva, sans-serif;
-						margin:10px;
-						padding:5px;
-					}
-					.readmore{
-						font-family: Verdana, Geneva, sans-serif;
-						float: right;
-						clear: both;
-					}
-					
-				</style>
-				
-				
+				<div id='blogContent'>
+				</div>
+
+				<a class="readmore" >Read more</a>
+
 			</article>
 
 		</div>
@@ -400,29 +362,5 @@
 		</div>
 	 </div>
 	 </body>
-		 <script >
-		 	$(document).ready(function(){
-				
-				var BlogOption = {blog:"3"};
-				$.get("blog/ajax.php",BlogOption).done(function(data){
-					//console.log(data);
-					var obj =JSON.parse(data)
-					console.log(data);
-					var BlogHtml = '';
-				
-					for (var i in obj){
-						BlogHtml = '<div class="blogPostblock">' +
-					' <div class="blogPost_title">'+obj[i].title+'</div>' +
-					'<div class="blogPost_author">Post by <span class="underline">'+obj[i].author+'</span> <span class="blogPost_time">'+obj[i].datePosted+'</span> </div>'+
-					
-					'<div class="blog_Post_content">'+obj[i].content+'</div>' +
-					'<div class="readmore">Read more</div>'+
-				'</div>';
-						$('#blogHead').append(BlogHtml);
-					}
-						
-				})
-			})
-		 </script>
 </html>
  

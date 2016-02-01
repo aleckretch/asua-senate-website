@@ -36,11 +36,12 @@ else if ( isset( $_GET['blog'] ) )
 	$response = $_GET['blog'];
 	if ( $response === "first" )
 	{
-		
-		echo json_encode( Database::getMostRecentPost() );
+		$data = array( Database::getMostRecentPost() );
+		$data = Database::convertDateOfBlogPosts( $data );
+		echo json_encode( $data );
 	}
 	else
 	{
-		echo json_encode( Database::getPostsBeforeID( $response ) );
+		echo json_encode( Database::convertDateOfBlogPosts( Database::getPostsBeforeID( $response ) ) );
 	}
 }

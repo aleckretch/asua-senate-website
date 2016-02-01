@@ -9,8 +9,6 @@
 	The filename for the file on the server will be Agenda_ID.pdf 
 		where ID is replaced by the id returned from createAgenda.
 	Finally the permissions on the file are changed to not allow execution.
-
-	TODO: Need to secure this by making sure correct CSRF token was sent
 */
 require_once "./database.php";
 require_once "./session.php";
@@ -64,6 +62,21 @@ if ( $mime !== "application/pdf" )
 	$message = urlencode( "{$mime} is not PDF" );
 	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
 	exit();
+}
+
+if ( !isset( $_POST['token'] ) )
+{
+	$message = urlencode( "Token not passed" );
+	header( "Location: admin.php?agenda=yes&uploaded={$message}" );
+	exit();
+}
+
+if ( !Session::verifyToken( $_POST['token'] ) )
+{
+	$str = urlencode( "Request could not be handled, token does not match" );
+	header( "Location: admin.php?agenda=yes&uploaded={$str}" );
+	exit();
+	
 }
 
 $title = $_POST['title'];

@@ -14,13 +14,21 @@ if ( !Session::userLoggedIn() )
 }
 
 $req = $_POST;
-$needed = array( "author" , "title" , "text" );
+$needed = array( "author" , "title" , "text", "token" );
 foreach( $needed as $key=>$value )
 {
-	if ( !isset( $req[ $key ] ) )
+	if ( !isset( $req[ $value ] ) )
 	{
-		die( "Missing {$key}" );
+		die( "Missing {$value}" );
 	}
+}
+
+if ( !Session::verifyToken( $req['token'] ) )
+{
+	$str = urlencode( "Request could not be handled, token does not match" );
+	header( "Location: admin.php?blog=true&uploaded={$str}" );
+	exit();
+	
 }
 
 $title = Database::sanitizeData( $req[ 'title' ] );

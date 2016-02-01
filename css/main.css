@@ -35,6 +35,7 @@
 	  color: black;
 	  background-color: white;
 	}
+
 	
 	.main-nav {
 		position: relative;
@@ -130,9 +131,6 @@
 	#senate-logo-div {
 		position: absolute;
 		width: 100%;
-/* 
-		left: 50%;	
- */
 	}
 	#senate-logo {
 		position: relative;
@@ -183,11 +181,9 @@
 	.main {
 		position:relative;
 		z-index: 149;
-	  background: black;
-	  padding: 50px 0px 50px;
-	  column-count: 2;
-/* 	  column-gap: 40px; */
-	  font-family: Verdana;
+	  	background: black;
+	  	padding: 50px 0px 50px;
+	  	font-family: Verdana;
 		background-image: url("../images/our-impact-background.png");
 		background-repeat: repeat;
 	}
@@ -197,7 +193,6 @@
 		font-family: Myriad pro;
 	}
 
-	/* format footer section */
 	footer {
 		width: 100%;
 		margin: 0;
@@ -287,8 +282,6 @@
 
 	}
 	
-	/*	Popup Format */
-	
 	h6 {
 		font-family: 'bebas_neueregular';
 		font-size: 24px;
@@ -372,22 +365,6 @@
 		float: right;
 		width: 69%
 	}
-	
-	/*
-	.popup dl {
-		text-align: left;
-	}
-	
-	.popup dl dd {
-		padding: 0 0 0 20px;
-	}
-	*/
-	
-	
-	
-	
-	/* Format Blog Section */
-	
 
 	form {
 		margin: auto;
@@ -431,6 +408,58 @@
 		display: block;
 		margin-bottom: 15px;
 	}
+
+	#blogHead{
+		background: white;
+		margin: 0 auto;
+	}
+
+	.blogPostblock{
+		margin-top:10px;
+		clear: both;
+	}
+	.blogPost_title{
+		margin:5px;
+		padding:5px;
+		font-family:"Trebuchet MS", Helvetica, sans-serif;
+		font-size: 3em;
+		font-weight: bold;
+		color:#233E76;
+		letter-spacing: -1px;
+	
+	}
+	.blogPost_author{
+
+		margin:10px;
+		padding-left:5px;
+		color:red;
+		font-family: 'Roboto', sans-serif;
+		letter-spacing: 1px;
+	}	
+
+	.underline{
+		 text-decoration: underline;
+	
+	}
+
+	.blogPost_time{
+	
+	}
+	.blog_Post_content{
+		font-family: 'Roboto', sans-serif;
+		margin:10px;
+		padding:5px;
+		font-size: 1.2em;
+		line-height: 25px;
+		letter-spacing: 1px;
+	}
+	.readmore{
+		font-family: 'Roboto', sans-serif;
+		float: right;
+		clear: both;
+	
+	}
+					
 	
 
 

@@ -10,7 +10,8 @@ require_once( "./database.php" );
 $agenda = Database::getMostRecentAgenda();
 if ( !isset( $agenda[ 'id' ] ) )
 {
-	die( "Could not download agenda. <br>File not found." );
+	header( "Location: ../index.html?error=download" );
+	exit();
 }
 $id = $agenda[ 'id' ];
 
@@ -19,7 +20,8 @@ $id = $agenda[ 'id' ];
 $fileName = "./uploads/Agenda{$id}.pdf";
 if ( !file_exists( $fileName ) )
 {
-	die ( "File does not exist" );
+	header( "Location: ../index.html?error=download" );
+	exit();
 }
 
 //tell browser to expect pdf file as response
