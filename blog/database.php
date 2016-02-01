@@ -2,6 +2,9 @@
 /*
 Holds functions pertaining to the database
 */
+
+require_once "./config.php";
+
 class Database
 {
 	/*
@@ -10,12 +13,10 @@ class Database
 	*/
 	public static function connect()
 	{
-		$dbName = "SENATE";
-
-		//TODO: store this somewhere so that it cannot be accessed except outside the root folder
-		//Do not have a empty password for the root user when deployed
-		$dbUser = "root";
-		$dbPass = "";
+		$dbName = Config::$DB_NAME;//"SENATE";
+		$dbUser = Config::$DB_USER;//"root";
+		$dbPass = Config::$DB_PASS;//"";
+		$dbHost = Config::$DB_HOST;
 
 		//$conn holds the connection to the database if it has been opened already
 		//otherwise, a connection is created and $conn points to that connection
@@ -25,7 +26,7 @@ class Database
 		if ( $conn )
 			return $conn;
 
-		$dataSrc = "mysql:host=localhost;dbname={$dbName}";
+		$dataSrc = "mysql:host={$dbHost};dbname={$dbName}";
 		try 
 		{
 			//create the connection with the parameters given
