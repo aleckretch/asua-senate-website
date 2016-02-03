@@ -178,6 +178,12 @@
 	  width: 100%;
 	  top: 0;
 	}
+
+	h1.bgHead
+	{
+
+	}
+
 	.main {
 		position:relative;
 		z-index: 149;
@@ -234,6 +240,19 @@
 		font-size: 1.3em;
 		margin-left: 20%;
 		line-height: 130%;
+	}
+
+	/*
+	article
+	{
+		background-image: url("../images/our-impact-background.png");
+		background-repeat: repeat;
+	}
+	*/
+
+	article > :not(h1)
+	{
+		background: white;
 	}
 	
 	.right-content{
@@ -410,7 +429,6 @@
 	}
 
 	#blogHead{
-		background: white;
 		margin: 0 auto;
 	}
 
